@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{%  block title %} Регістрація {% endblock %}
+{% block body %}
+    <h2> Форма для регістрації! </h2>
+     <form method="POST" action="/registration" >
+      <p><b>Ім’я:</b><br>
+       <input type="text" size="25" name="name">
+      </p>
+      <p><b>Прізвище:</b><br>
+       <input type="text" size="25" name="surname">
+      </p>
+      <p><b> Дата народження  <b><br>
+      <select name="data_day">
+      </select>
+      <select name="data_monday">
+      </select>
+      <select name="data_year">
+      </select>
+      </p>
+       <p><b>email: <b><br>
+       <input type="text" size="25" name="email">
+      </p>
+      <p><b>Логін: <b><br>
+       <input type="text" size="25" name="login">
+      </p>
+      <p><b> Пароль: </b><br>
+       <input type="password" size="25" name="password">
+      </p>
+      <p><b> Підтвердіть пароль: </b><br>
+       <input type="password" size="25" name="repeat_password">
+      </p>
+      <p><b>Ваша роль на сайті:</b><Br>
+       <input type="radio" name="role" checked value="journalist"> Журналіст <Br>
+       <input type="radio" name="role" value="interview"> Інтервю’ер <Br>
+       <input type="radio" name="role"  value="reader"> Читач  <Br>
+      </p>
+      <p><input type="submit" value="Надіслати ">
+       <input type="reset" value="Очистити"></p>
+     </form>
+ {% endblock %}

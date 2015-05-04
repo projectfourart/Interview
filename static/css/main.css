@@ -1,0 +1,39 @@
+.list_user {
+	margin:0 auto 0;
+	border:1px solid black;
+	padding-right: 5px;
+	float:left;
+	width:700px;
+	padding-bottom: 10px;
+} 
+.auth_user {
+	width:250px;	
+	border:1px solid black;
+	float:left;
+	margin-right: 5px;
+	padding: 10px;
+}
+.list_user > ul > li {
+	display: block;
+	border:1px solid blue;
+	margin-top:5px;
+	padding: 4px;
+
+}
+.span_right_elm {
+	float:right;
+}
+div {
+	background: #fff;
+}
+body {
+	 background-image: url(../img/fon.jpg);
+	 background-color: lightblue;
+	 text-align: center;
+}
+h1 {
+	text-align: center;
+}
+h2 {
+	text-align: center;
+}
