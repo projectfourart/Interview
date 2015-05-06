@@ -8,14 +8,16 @@ from application.views.main_view import *
 from application.user.user import *
 from flask import redirect, url_for
 
-class Main(User):
+class Main():
 
 	def __init__(self):
 		self.__model = Model()
 		self.__view = MainView()
+		self.user = User()
 
 	def show(self):
 		# data = self.get_list_all_user() # default show old list user
+
 		data = []
 		return self.__view.render(data)
 

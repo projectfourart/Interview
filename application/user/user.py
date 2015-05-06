@@ -3,10 +3,23 @@
 	Interview.application.user
 	~~~~~~~~~~~~~~~~~~~~~~~~~~
 """
-class User(object):
+from application.model.model import *
+from application.configuration import * 
+from flask import redirect, url_for, session
 
+class User(object):
+	def __init__(self):
+		self.__model = Model()
 	def auth_user(self, request):
-		print "auth_user"
+		username = request.form['username']
+		password = request.form['password']
+		if self.__model.IsExistsUser(TABLE_USERS, username, password):
+			session['username'] = username
+			redirect(url_for("index"))
+	def exit(self):
+		session.pop("username", None)
+		redirect(url_for("index"))
+
 	def reg_user(self, request):
 		print "reg_user"
 	def delete_user(self, request):

@@ -29,9 +29,16 @@
 				array[value.name] = value.value
 			})
 			// array['day'] = $("#day").value
-			array['day'] = window.document.getElementById('day').selectedIndex
-			array['mondey'] = window.document.getElementById('mondey').selectedIndex
-			array['year'] = window.document.getElementById('year').selectedIndex
+			if ( window.document.getElementById('day') != null && 
+				 window.document.getElementById('mondey') != null &&
+				  window.document.getElementById('year') != null
+				){
+
+				array['day'] = window.document.getElementById('day').selectedIndex
+				array['mondey'] = window.document.getElementById('mondey').selectedIndex
+				array['year'] = window.document.getElementById('year').selectedIndex		
+
+			}
 
 			// array['monday'] = $("#mondey").value
 			// array['year'] = $("#year").value

@@ -4,13 +4,7 @@
 	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 """
 import MySQLdb
-
-HOST = "localhost"
-PASSWORD = "x7liruk"
-USER = "root"
-DATABASE = "interview"
-CODING = "utf8"
-
+from application.configuration import *
 
 class Model(object):
 	__connect = None
@@ -27,10 +21,16 @@ class Model(object):
 	def IsExistsUser(self, table_name, user, password):
 		sql = " SELECT `password` FROM `"+table_name+"` WHERE `name` = '"+user+"' "
 		self.__cursor.execute(sql)
-		if self.__cursor.fetchall()[0][0] == password:
-			return True
+
+		try:
+			if self.__cursor.fetchall()[0][0] == password:
+				return True
+		except IndexError:
+			return False
 		else:
 			return False
+
+
 	def AddNewPerson(self, name, surname):
 		sql = " INSERT INTO `Person` (`name`, `surname`) VALUES ( '%s' , '%s') " % (name, surname)
 		print sql

@@ -11,7 +11,7 @@ from flask import Flask, request, session
 
 app = Flask(__name__)
 app.debug = True
-app.secret_key = 'A0Zr98j/3yX R~XHH!jmN]LWX/,?RT'
+app.secret_key = "ass234jlk234nlui23j4l23k4j"
 
 # Route 
 @app.route("/", methods=["GET","POST"])
@@ -24,15 +24,17 @@ def index():
 	if request.method == "POST":
 		if 'button_auth' in request.form: # if click button auth_user
 			if len(request.form['username']) != 0 and len(request.form['password']) != 0: # validation
-				obj.auth_user(request)
+				obj.user.auth_user(request)
 		if 'button_reg' in request.form:
-			obj.reg_user(request)
+			obj.user.reg_user(request)
 
 	elif request.method == "GET":
 		if request.args.get('drop') and request.args.get('drop') != "":
-			obj.delete_user(request)
+			obj.user.delete_user(request)
+		elif request.args.get('exit') == "True":
+			obj.user.exit()
 	
-	obj.get_list_all_user()
+	obj.user.get_list_all_user()
 	return obj.show()
 
 
