@@ -1,24 +1,79 @@
-window.onload = function (){
-	var elm = window.document.getElementsByTagName("select");
-		for (var j = 0; j <= 31; j ++ ){
-			var option = document.createElement('option')
-			if (j == 0) option.innerHTML="--"
-			else option.innerHTML = j;
-			elm[0].appendChild(option)
-		}
-		array = ['Січень', 'Лютий', 'Березень', 'Квітень','Травень', 'Червень', 'Липень', 'Серпень','Вересень','Жовтень','Листопад','Грудень']
-		for (var j = 0; j < array.length; j ++ ){
-			var option = document.createElement('option')
+(function(){
+	var app = {
+		init : function(){
+			this.setUpListeners();	
+		},
+		setUpListeners : function (){
+			$('form').on("submit", app.submitForm);
+		},
+		submitForm : function (data){
+			data.preventDefault();
+			var form = $(this);
+			if (app.validataeForm(form)){
+				$.ajax({
+					url: '/',
+					type: 'POST',
+					data: app.getAllInputs(form)
+				})
+				 $(document).ready(function(){
+				$("#myModalBox").modal('show');
+				});
+   				
+				// $(location).attr('href',url);
+			}
+		},
+		getAllInputs: function(form){
+			var dump = form.find("input","select");
+			array = new Object();
+			$.each(dump,function(key, value){
+				array[value.name] = value.value
+			})
+			// array['day'] = $("#day").value
+			array['day'] = window.document.getElementById('day').selectedIndex
+			array['mondey'] = window.document.getElementById('mondey').selectedIndex
+			array['year'] = window.document.getElementById('year').selectedIndex
 
-			if (j == 0) option.innerHTML = "--"
-			else option.innerHTML = array[j];
+			// array['monday'] = $("#mondey").value
+			// array['year'] = $("#year").value
+			return array
 
-			elm[1].appendChild(option)
 		}
-		for (var j = 1980; j <= 1999; j ++ ){
-			var option = document.createElement('option')
-			if (j == 1980) option.innerHTML="--"
-			else option.innerHTML = j;
-			elm[2].appendChild(option)
+		,
+		validataeForm: function(form){
+			var inputs = form.find("input");
+			valid = true;
+			inputs.tooltip('destroy');
+
+			$.each(inputs,function(index, val){
+				var input = $(val);
+				val = input.val();
+				formGroup = input.parents('.form-group');
+				label = formGroup.find('label').text().toLowerCase();
+				textError = "Ведіть " + label;
+
+				if (val.length === 0){
+					formGroup.addClass('has-error').removeClass('has-success');
+					input.tooltip({
+						trigger: 'manual',
+						placement: 'top',
+						title: textError
+					}).tooltip('show');
+
+					valid = false;
+				}else {
+					formGroup.addClass('has-success').removeClass('has-error');
+				}
+			});
+
+				return valid;
 		}
-}
+	}
+	app.init();
+
+
+}());
+
+$(".finish").click(function(){
+	var url = "/";
+	window.location.href = url;
+});

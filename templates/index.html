@@ -1,33 +1,124 @@
 {% extends 'base.html' %}
-{% block title %} index title {% endblock %}
+{% block title %} Interview {% endblock %}
 
 	{% block body %}
-		{%  if session %}
-		<div class="auth_user">
-			<h2>hello {{ session['username']}}</h2>
-		</div>
-		{% else %}
-		<div class="auth_user">
-			<h2>Sing in</h2>
-			<form action="/" method="post">
-				<input type="text" name="username" placeholder="name">	
-				<input type="password" name="password" placeholder="password">	
-				<input type="submit" name="button">
-			</form>
-			<a href="/registration"> sign up</a>
-		</div>
-		{% endif %}
-		<div class="list_user">
-		<h2>List Person!</h2>
-			<ul>
-				{% for iteam in data %}
-				<li>{{ iteam[1] }} {{ iteam[2]}} <span class="span_right_elm"><a href="?drop= {{ iteam[0] }}">x</a></span></li>
-				{% endfor %}
-			</ul>
-			<form action="/" method="POST">
-				<input type="text" name="name_new_person" placeholder="name" >
-				<input type="text" name="surname_new_person" placeholder="surname" >
-				<input type="submit" name="button_person" value="add new person">
-			</form>
-		</div>
+	<div class="container">
+
+      <div class="row row-offcanvas row-offcanvas-right">
+
+        <div class="col-xs-12 col-sm-9">
+          <p class="pull-right visible-xs">
+            <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
+          </p>
+          <div class="jumbotron">
+            <h1>Ласкаво просимо!</h1>
+            <p>Даний сервіс надає допомогу клієнтам ( користувачам ) мати змогу надати інформацію про ... </p>
+          </div>
+          <div class="row">
+
+          	<div class="col-xs-12">          		
+				<div class="panel panel-default ">
+				  <!-- Default panel contents -->
+				  <div class="panel-heading">Список користувачів</div>
+				  <!-- Table -->
+				  <table class="table">
+					<thead>
+						<tr><td>№</td><td>Ім’я</td><td>Прізвище</td><td>Дата народження</td><td>Статус</td><td>Видалити</td></tr>
+					</thead>
+				  	<tbody>
+
+				    <tr><td>1</td><td>name</td><td>surname</td>
+				    	<td>20:23:2004</td>
+				    	<td>
+				    		<span class="glyphicon glyphicon-ok-circle"></span>
+				  		</td>
+				    	<td>
+					   		<a href=""><span class='glyphicon glyphicon-trash'></span></a>
+						</td>
+					</tr>
+				    <tr><td>2</td><td>name</td><td>surname</td>
+				    	<td>20:23:2004</td>
+				    	<td>
+				    		<span class="glyphicon glyphicon-remove-circle"></span>
+				  		</td>
+				    	<td>
+					   		<a href=""><span class='glyphicon glyphicon-trash'></span></a>
+						</td>
+					</tr>
+					<tr><td>3</td><td>name</td><td>surname</td>
+				    	<td>20:23:2004</td>
+				    	<td>
+				    		<span class="glyphicon glyphicon-ok-circle"></span>
+				  		</td>
+				    	<td>
+					   		<a href=""><span class='glyphicon glyphicon-trash'></span></a>
+						</td>
+					</tr>
+					<tr><td>...</td><td>name</td><td>surname</td>
+				    	<td>20:23:2004</td>
+				    	<td>
+				    		<span class="glyphicon glyphicon-ok-circle"></span>
+				  		</td>
+				    	<td>
+					   		<a href=""><span class='glyphicon glyphicon-trash'></span></a>
+						</td>
+					</tr>
+					<tr><td>n</td><td>name</td><td>surname</td>
+				    	<td>20:23:2004</td>
+				    	<td>
+				    		<span class="glyphicon glyphicon-ok-circle"></span>
+				  		</td>
+				    	<td>
+					   		<a href=""><span class='glyphicon glyphicon-trash'></span></a>
+						</td>
+					</tr>
+				  	</tbody>
+				  </table>
+				</div>
+          	</div><!-- list person  -->
+
+
+          </div><!--/row-->
+			<ul class="pagination">
+				  <li><a href="#">&laquo;</a></li>
+				  <li><a href="#">1</a></li>
+				  <li><a href="#">2</a></li>
+				  <li><a href="#">3</a></li>
+				  <li><a href="#">4</a></li>
+				  <li><a href="#">5</a></li>
+				  <li><a href="#">&raquo;</a></li>
+			</ul> <!-- pagination -->
+        </div><!--/span-->
+
+        <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
+
+			<div class="well">
+				<form role="form">
+					<input type="text" value="ok" name="button_auth" style="display:none;">
+					<div class="input-group form-group">
+						  <label for="inputName" class="col-sm-2 control-label" style="display:none"> Логін </label> 
+						 <input type="text" name="username" class="form-control" id="inputName"  placeholder="Login">	
+					</div>
+					<br>
+
+					<div class="input-group form-group">
+  						<label for="inputName" class="col-sm-2 control-label "  style="display:none"> Пароль </label> 
+						 <input type="text" name="password" class="form-control" id="inputName" placeholder="Password">	
+					</div>
+					<br>
+					<div class="input-group form-group">
+						 <button type="submit" class="btn btn-success">Авторизація</button>					
+					</div>
+				</form><!-- ./form -->
+			</div>
+			<a href="/registration" id='registration'>Рерєстрація</a>
+        </div><!--/span-->
+      </div><!--/row-->
+	    <hr>
+	    <footer>
+	        <p>&copy; Company 2015</p>
+	    </footer>
+
+    </div><!--/.container-->
+
 	{% endblock %}

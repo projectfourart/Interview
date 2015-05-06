@@ -19,17 +19,38 @@ def index():
 	"""
 	This is index page!
 	"""
-	obj = Main(request)
+	obj = Main()
+
+	if request.method == "POST":
+		if 'button_auth' in request.form: # if click button auth_user
+			if len(request.form['username']) != 0 and len(request.form['password']) != 0: # validation
+				obj.auth_user(request)
+		if 'button_reg' in request.form:
+			obj.reg_user(request)
+
+	elif request.method == "GET":
+		if request.args.get('drop') and request.args.get('drop') != "":
+			obj.delete_user(request)
+	
+	obj.get_list_all_user()
 	return obj.show()
-	# return render_template("index.html")
-@app.route("/registration", methods=["GET","POST"] )
+
+
+
+@app.route("/registration" )
 def registration():
 	"""
 	This is registration page!
 	"""
-	obj = Registration(request)
+	obj = Registration()
 	return obj.show()
 
+@app.route("/about_pro")
+def about():
+	pass
+@app.route("/contact")
+def contact():
+	pass
 @app.errorhandler(404)
 def not_found_page(error):
 	"""

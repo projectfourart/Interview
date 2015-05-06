@@ -7,17 +7,12 @@ from application.model.model import *
 from application.views.registration_view import *
 
 class Registration(object):
-	def __init__(self, request):
+	def __init__(self):
 		self.model = Model()
 		self.view = RegView()
-		if request.method == "POST":
-			self.registration(request)
+
 
 
 	def show(self):
 		return self.view.render()
-
-	def registration(self, request):
-		self.model.AddUser(request)
-		# print request.form
 
