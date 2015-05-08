@@ -23,58 +23,41 @@
 				  <!-- Table -->
 				  <table class="table">
 					<thead>
-						<tr><td>№</td><td>Ім’я</td><td>Прізвище</td><td>Дата народження</td><td>Статус</td><td>Видалити</td></tr>
+						<tr><td>№</td><td>Ім’я</td><td>Прізвище</td><td>Дата народження</td><td>Статус</td> 
+						{% if session['admin'] == True %}
+							<td>Видалити</td> 
+						{% else %}
+						 {% endif %}
+						  </tr>
 					</thead>
 				  	<tbody>
+					{% for team in data %}
 
-				    <tr><td>1</td><td>name</td><td>surname</td>
-				    	<td>20:23:2004</td>
+				    <tr><td><a href="/profile/{{team[0]}}" >{{ team[0] }}</a></td><td><a href="/profile/{{team[0]}}" >{{ team[1] }}</a></td><td><a href="/profile/{{team[0]}}" >{{ team[2] }}</a></td> <!-- block start -->
+				    	<td><a href="/profile/{{team[0]}}" >{{ team[3] }}</a></td>
+				    	{% if team[3] == 'true' %}
 				    	<td>
-				    		<span class="glyphicon glyphicon-ok-circle"></span>
+				    		<span style="color:green;" class="glyphicon glyphicon-ok-circle"></span>
 				  		</td>
-				    	<td>
-					   		<a href=""><span class='glyphicon glyphicon-trash'></span></a>
-						</td>
-					</tr>
-				    <tr><td>2</td><td>name</td><td>surname</td>
-				    	<td>20:23:2004</td>
-				    	<td>
-				    		<span class="glyphicon glyphicon-remove-circle"></span>
+				  		{% else %}
+				  		<td>
+				    		<span style="color:red;" class="glyphicon glyphicon-remove-circle"></span>
 				  		</td>
+				  		{% endif %}
+				  		{% if session['admin'] == True %}
 				    	<td>
-					   		<a href=""><span class='glyphicon glyphicon-trash'></span></a>
+					   		<a href="?drop_id={{team[0]}}"><span class='glyphicon glyphicon-trash'></span></a>
 						</td>
-					</tr>
-					<tr><td>3</td><td>name</td><td>surname</td>
-				    	<td>20:23:2004</td>
-				    	<td>
-				    		<span class="glyphicon glyphicon-ok-circle"></span>
-				  		</td>
-				    	<td>
-					   		<a href=""><span class='glyphicon glyphicon-trash'></span></a>
-						</td>
-					</tr>
-					<tr><td>...</td><td>name</td><td>surname</td>
-				    	<td>20:23:2004</td>
-				    	<td>
-				    		<span class="glyphicon glyphicon-ok-circle"></span>
-				  		</td>
-				    	<td>
-					   		<a href=""><span class='glyphicon glyphicon-trash'></span></a>
-						</td>
-					</tr>
-					<tr><td>n</td><td>name</td><td>surname</td>
-				    	<td>20:23:2004</td>
-				    	<td>
-				    		<span class="glyphicon glyphicon-ok-circle"></span>
-				  		</td>
-				    	<td>
-					   		<a href=""><span class='glyphicon glyphicon-trash'></span></a>
-						</td>
-					</tr>
+						{% else %}
+						{% endif %}
+					</tr> {% endfor %} <!-- endblock -->
+				    
 				  	</tbody>
 				  </table>
 				</div>
+				{% if session['admin'] == True %}
+					<a href="?drop_all=True"> Видалити всіх користувачів </a>
+				{% endif %}
           	</div><!-- list person  -->
 
 

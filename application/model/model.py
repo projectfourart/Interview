@@ -14,7 +14,7 @@ class Model(object):
 			self.__cursor = self.__connect.cursor()
 
 	def getAllListPerson(self, table_name):
-		sql = " SELECT * FROM `"+table_name+"` "
+		sql = " SELECT `id`,`name`,`surname`,`brithish_day`,`status` FROM `"+table_name+"` WHERE `visible` =  'true' "
 		self.__cursor.execute(sql)
 		return self.__cursor.fetchall()
 
@@ -31,31 +31,23 @@ class Model(object):
 			return False
 
 
-	def AddNewPerson(self, name, surname):
-		sql = " INSERT INTO `Person` (`name`, `surname`) VALUES ( '%s' , '%s') " % (name, surname)
-		print sql
-		self.__cursor.execute(sql)
-		self.__connect.commit()
+	# def AddNewPerson(self, name, surname):
+	# 	sql = " INSERT INTO `Person` (`name`, `surname`) VALUES ( '%s' , '%s') " % (name, surname)
+	# 	self.__cursor.execute(sql)
+	# 	self.__connect.commit()
 
 	def DropPerson(self, index_person):
-		sql = "DELETE  FROM `Person` WHERE `id` = '%s' " % index_person
+		sql = "UPDATE `%(table_name)s` SET `visible` = 'false' WHERE `id` = '%(id)s' " % {"table_name":TABLE_USERS,"id":index_person}
 		self.__cursor.execute(sql)
 		self.__connect.commit()
 
-	def AddUser(self, resquest):
-		# print resquest.form
+	def DropAllUser(self):
+		sql = "TRUNCATE TABLE %s" % TABLE_USERS
+		self.__cursor.execute(sql)
+		self.__connect.commit()
 
-		username = resquest.form['name']
-		surname = resquest.form['surname']
-		british_day = [resquest.form['data_day'], resquest.form['data_year']]
-		email = resquest.form['email']
-		password = resquest.form['password']		
-		repeat_password = resquest.form['repeat_password']
-		role = resquest.form['role']
-		# print username, surname, british_day, email, password, repeat_password, role
-		# sql = " INSERT INTO `Users` (`name`,`surname`,`brithish_day`,`email`,`password`, `role`) VALUES ('%s','%s','%s','%s','%s','%s') " % ( username, surname, ""+british_day[1]+"", email, password, role )
-		sql = " INSERT INTO `Users` (`name`,`surname`,`brithish_day`,`email`,`password`, `role`) VALUES ('%s','%s','%s','%s','%s','%s') " % ( username, surname, ""+british_day[1]+"", email, password, role )
-
+	def AddUser(self, values):
+		sql = "INSERT INTO `%(table_name)s` (`name`,`surname`,`brithish_day`,`email`,`password`,`role`,`login`,`visible`,`status`) VALUES ('%(name)s','%(surname)s','%(brithish_day)s','%(email)s','%(password)s','%(role)s','%(login)s','%(visible)s','%(status)s') " % values
 		self.__cursor.execute(sql)
 		self.__connect.commit()
 

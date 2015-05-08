@@ -84,3 +84,9 @@ table > thead >tr > td {
   text-align: center;
   margin-bottom: 25px;
 }
+table > tbody >tr > td  > a:hover {
+  color: #000;
+}
+table > tbody >tr > td  > a {
+  color: #000;
+}

@@ -36,7 +36,16 @@
 
 				array['day'] = window.document.getElementById('day').selectedIndex
 				array['mondey'] = window.document.getElementById('mondey').selectedIndex
-				array['year'] = window.document.getElementById('year').selectedIndex		
+				array['year'] = window.document.getElementById('year').selectedIndex	
+
+				dump = window.document.getElementsByName("role");
+				for (var i = 0; i < dump.length; i++){
+					if (dump[i].checked == true){
+						role = dump[i].defaultValue;
+					}
+				}
+				console.log(role)
+				array['role']	= role;
 
 			}
 

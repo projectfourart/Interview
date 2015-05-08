@@ -3,10 +3,10 @@
 	Interview.runserver
 	~~~~~~~~~~~~~~~~~~~
 """
-from application.controllers.main_controller import *
-from application.controllers.profile_controller import *
-from application.controllers.registration_controller import *
-from application.controllers.not_found_controller import *
+from application.controllers.main_controller import Main
+from application.controllers.profile_controller import Profile
+from application.controllers.registration_controller import Registration
+from application.controllers.not_found_controller import Not_Found
 from flask import Flask, request, session
 
 app = Flask(__name__)
@@ -29,12 +29,15 @@ def index():
 			obj.user.reg_user(request)
 
 	elif request.method == "GET":
-		if request.args.get('drop') and request.args.get('drop') != "":
-			obj.user.delete_user(request)
+		if request.args.get('drop_id') and request.args.get('drop') != "":
+			obj.user.delete_user(request.args.get('drop_id')) 
+		elif request.args.get('drop_all') and request.args.get('drop') != "":
+			obj.user.delete_all_user() 
+			
 		elif request.args.get('exit') == "True":
 			obj.user.exit()
 	
-	obj.user.get_list_all_user()
+	# obj.user.get_list_all_user()
 	return obj.show()
 
 
