@@ -18,6 +18,11 @@ class Model(object):
 		self.__cursor.execute(sql)
 		return self.__cursor.fetchall()
 
+	def getIndexPerson(self, table, index):
+		sql = "SELECT * FROM `%(table)s` WHERE  `id` = '%(index)s' " % {"table":table, "index": index}
+		self.__cursor.execute(sql)
+		return self.__cursor.fetchall()
+
 	def IsExistsUser(self, table_name, user, password):
 		sql = " SELECT `password` FROM `"+table_name+"` WHERE `name` = '"+user+"' "
 		self.__cursor.execute(sql)

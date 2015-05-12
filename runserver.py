@@ -50,6 +50,15 @@ def registration():
 	obj = Registration()
 	return obj.show()
 
+@app.route("/profile/<int:id>")
+def profile(id):
+	"""
+	This is profile page!
+	"""
+
+	obj = Profile()
+	return obj.show(id)
+
 @app.route("/about_pro")
 def about():
 	pass

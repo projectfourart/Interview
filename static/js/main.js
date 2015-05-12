@@ -93,3 +93,83 @@ $(".finish").click(function(){
 	var url = "/";
 	window.location.href = url;
 });
+
+(function(){
+	app = {
+		init : function(){
+			app.setUpListeners()
+		},
+		setUpListeners : function (){
+			$('#add_quation').on("click", app.add_quation);
+			$("#clear_btn").on("click", app.clear);
+			$("#loading-example-btn").on("click", app.save);
+			$("#reset").on('click',app.reset);
+
+		},
+		reset : function(){
+			window.location.reload()
+		},
+
+		save : function (){
+			    var btn = $(this)
+			    btn.button('loading')
+			    // $.ajax(...).always(function () {
+			    window.setTimeout(function(){
+				    btn.button('reset')
+				    $("#Modal").modal('show')
+			    },2000)
+			    
+		},
+
+		clear : function(){
+				var right_quation = $("#list_select_quation")	
+				var list_quation = $('#list_quation');
+				var inputs = list_quation.find("input");
+				var li = right_quation.find("li");
+				li.remove();
+				$.each(inputs,function(index, value){
+					value.checked = false
+				})
+
+
+			}
+		,
+		add_quation : function (){
+			var all_elm = app.get_all_quation() // get all
+			var result = app.get_active_quation()	// get ACITVE elm
+			var right_quation = $("#list_select_quation")
+
+			for (var i = 0 ; i < result.length; i ++){
+				if (result[i] == true){
+					right_quation.append("<li class='list-group-item'>"+ all_elm[i] +"</li>")
+				}
+			}
+			// ....
+		}, 
+		get_all_quation : function (){
+			var list_quation = $('#list_quation');
+			var inputs = list_quation.find("input");
+			var result = []
+			$.each(inputs,function(index, value){
+				input = $(value)
+				InputGroup = input.parents('.input-group');
+				span_text = InputGroup.find('span').text().toLowerCase();
+				result.push(span_text)
+				})
+			return result
+		},
+		get_active_quation : function (){
+			var list_quation = $('#list_quation');
+			var inputs = list_quation.find("input");
+			var result = []
+			$.each(inputs,function(index, value){
+				result.push(value.checked)
+				})
+			return result
+		},
+
+	}
+
+
+	app.init();	
+}());

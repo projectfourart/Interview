@@ -74,7 +74,7 @@ footer {
   border: 1px solid #E3E3E3;
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.05) inset;
 }
-table > tbody > tr > td {
+.table {
   text-align: center;
 }
 table > thead >tr > td {
@@ -89,4 +89,10 @@ table > tbody >tr > td  > a:hover {
 }
 table > tbody >tr > td  > a {
   color: #000;
+}
+
+.table-profile {
+ 
+  text-align: left;
+  text-indent: 9px;
 }

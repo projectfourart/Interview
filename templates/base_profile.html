@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+	{% block title %} Base profile {% endblock %}
+{% block body %}
+	    <div class="container">
+    	<dir class="row">
+    		<div class="col-xs-0 col-sm-0 col-md-1 col-lg-1"></div>
+    		<div class=" col-lg-10 col-md-10 col-sm-12 col-xs-12">
+	    		<div class="col-ln-12 col-xs-12">
+	    			<div class=" panel panel-success" >
+					  <!-- Default panel contents -->
+					  <div class="panel-heading" >Профіль користувача</div>
+
+
+						  <!-- Deault panel contents -->
+						  	<table class="table table-profile">
+							  	<tr>
+							  		<td>Прізвище ім’я По-батькові</td>
+							  		<td>{{ data[0][1] }} {{data[0][2]}}</td>
+							  	</tr>
+							  	<tr>
+							  		<td>Дата народження</td>
+							  		<td>{{ data[0][3] }}</td>
+							  	</tr>
+							  	<tr>
+							  		<td>E-mail</td>
+							  		<td>{{ data[0][4] }}</td>
+							  	</tr>
+							  	<tr>
+							  		<td>Логін</td>
+							  		<td>{{ data[0][7] }}</td>
+							  	</tr>
+						  </table>
+
+						</div>
+					
+				</div>
+					{% if data[0][9] == "false" %}
+						{% include "show_test.html" %}	
+					{% else %}
+						{% include "show_test_result.html" %}
+					{% endif %}
+			</div>
+    		<div class="col-xs-0 col-sm-0 col-md-1 col-lg-1"></div>
+{% endblock %}
