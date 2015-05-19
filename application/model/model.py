@@ -35,6 +35,11 @@ class Model(object):
 			return False
 		else:
 			return False
+	def add_question(self,id_user, text):
+		sql = "UPDATE SET `Users` `status` = 'true'" 
+		print sql
+
+
 	def getQuestionAll(self):
 		sql = "SELECT * FROM %s" % (TABLE_QUESTION)
 		self.__cursor.execute(sql)

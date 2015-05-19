@@ -25,7 +25,10 @@ class User(object):
 			session['username'] = "Admin"
 			redirect(url_for("index"))
 
-
+	def add_active_question(self, request):
+		id_user = request.form['id']
+		text = request.form['data']
+		self.__model.add_question(id_user, text)
 
 	def exit(self):
 		session.pop("admin", None)

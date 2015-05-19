@@ -113,11 +113,38 @@ $(".finish").click(function(){
 		save : function (){
 			    var btn = $(this)
 			    btn.button('loading')
-			    // $.ajax(...).always(function () {
+				var list = app.get_active_quation();
+				var all_elm = app.get_all_quation() // get all
+				var result = app.get_active_quation()	// get ACITVE elm
+				var question = ""
+			    
 			    window.setTimeout(function(){
 				    btn.button('reset')
+					for (var i = 0 ; i < result.length; i ++){
+						if (result[i] == true){
+							question += ""+String(i+1)+" : "
+						}
+					}
+					var reg = /\/profile\/(\d+)/ig
+					var id_user = reg.exec(window.location.href)[1]
+					// console.log(id_user)
+					// console.log(question)
+
+
+				     $.ajax({
+					   type: "POST",
+					   url: "/",
+					   data: "id="+String(id_user)+"&data="+String(question)+""
+					 });
+				    
 				    $("#Modal").modal('show')
-			    },2000)
+			    },500)
+
+			// var right_quation = $("#list_select_quation")
+			
+
+
+				// console.log()
 			    
 		},
 

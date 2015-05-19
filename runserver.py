@@ -27,6 +27,8 @@ def index():
 				obj.user.auth_user(request)
 		if 'button_reg' in request.form:
 			obj.user.reg_user(request)
+		if 'id' in request.form and 'data' in request.form:
+			obj.user.add_active_question(request) 
 
 	elif request.method == "GET":
 		if request.args.get('drop_id') and request.args.get('drop') != "":
