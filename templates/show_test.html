@@ -4,38 +4,16 @@
 					  <div class="panel-heading">Список запитань</div>
 					  <!-- List group -->
 					  <ul class="list-group" id="list-group">
+					  {% for obj in question %}
 					    <li class="list-group-item">
 						<div class="input-group">
-						      <span type="text" class="form-control">Quation #1</span>
+						      <span type="text" class="form-control">{{ obj[1] }}</span>
 						      <span class="input-group-addon">
 						        <input type="checkbox">
 						      </span>
 						    </div><!-- /input-group -->
 					    </li>
-					    <li class="list-group-item">
-						<div class="input-group">
-						      <span type="text" class="form-control">Quation #2</span>
-						      <span class="input-group-addon">
-						        <input type="checkbox">
-						      </span>
-						    </div><!-- /input-group -->
-					    </li>
-					    <li class="list-group-item">
-						<div class="input-group">
-						      <span type="text" class="form-control">Quation #3</span>
-						      <span class="input-group-addon">
-						        <input type="checkbox">
-						      </span>
-						    </div><!-- /input-group -->
-					    </li>
-					    <li class="list-group-item">
-						<div class="input-group">
-						      <span type="text" class="form-control">Quation #4</span>
-						      <span class="input-group-addon">
-						        <input type="checkbox">
-						      </span>
-						    </div><!-- /input-group -->
-					    </li>
+					    {% endfor %}
 					  </ul>
 					</div>
 					  <button type="button" class="btn btn-primary" id="add_quation">Додати</button>

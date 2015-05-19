@@ -5,6 +5,7 @@
 """
 import MySQLdb
 from application.configuration import *
+from ConfigParser import ConfigParser
 
 class Model(object):
 	__connect = None
@@ -34,7 +35,10 @@ class Model(object):
 			return False
 		else:
 			return False
-
+	def getQuestionAll(self):
+		sql = "SELECT * FROM %s" % (TABLE_QUESTION)
+		self.__cursor.execute(sql)
+		return self.__cursor.fetchall()	
 
 	# def AddNewPerson(self, name, surname):
 	# 	sql = " INSERT INTO `Person` (`name`, `surname`) VALUES ( '%s' , '%s') " % (name, surname)

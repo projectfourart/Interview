@@ -1,4 +1,4 @@
--- MySQL dump 10.13  Distrib 5.5.43, for debian-linux-gnu (x86_64)
+-- MySQL dump 10.13  Distrib 5.5.43, for debian-linux-gnu (i686)
 --
 -- Host: localhost    Database: interview
 -- ------------------------------------------------------
@@ -24,6 +24,31 @@ CREATE DATABASE /*!32312 IF NOT EXISTS*/ `interview` /*!40100 DEFAULT CHARACTER 
 USE `interview`;
 
 --
+-- Table structure for table `Question`
+--
+
+DROP TABLE IF EXISTS `Question`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `Question` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `body` text,
+  `bals` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `Question`
+--
+
+LOCK TABLES `Question` WRITE;
+/*!40000 ALTER TABLE `Question` DISABLE KEYS */;
+INSERT INTO `Question` VALUES (1,'Запитання №1','2.5'),(2,'Запитання №2','2.4'),(3,'Запитання №3','2'),(4,'Запитання №4','2.6'),(5,'Запитання №5','2.2');
+/*!40000 ALTER TABLE `Question` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `Users`
 --
 
@@ -32,15 +57,15 @@ DROP TABLE IF EXISTS `Users`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `Users` (
   `id` int(20) NOT NULL AUTO_INCREMENT,
-  `name` text CHARACTER SET latin1,
-  `surname` text CHARACTER SET latin1,
-  `brithish_day` text CHARACTER SET latin1,
-  `email` text CHARACTER SET latin1,
-  `password` text CHARACTER SET latin1,
-  `role` text CHARACTER SET latin1,
-  `login` text CHARACTER SET latin1,
-  `visible` text CHARACTER SET latin1,
-  `status` text CHARACTER SET latin1,
+  `name` text,
+  `surname` text,
+  `brithish_day` text,
+  `email` text,
+  `password` text,
+  `role` text,
+  `login` text,
+  `visible` text,
+  `status` text,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -51,7 +76,7 @@ CREATE TABLE `Users` (
 
 LOCK TABLES `Users` WRITE;
 /*!40000 ALTER TABLE `Users` DISABLE KEYS */;
-INSERT INTO `Users` VALUES (1,'Olecstandr','Kovalchuk','25:07:1995','sasha-kovalchuk7@mail.ru','x7liruk','reader','mjs','true','false'),(2,'Vasa','Pypkin','25:06:1988','vasa@mail.ru','x7liruk','jurnalist','vasa_pup','true','false'),(3,'Maha','Kovalcevich','28:08:1990','maha@mail.ru','x7liruk','reader','maha','true','false');
+INSERT INTO `Users` VALUES (1,'Вася ','Пупкін','2:03:1982','vasa@urk.net','password','reader','vasilich','true','false'),(2,'Коля','Ковалевич','10:06:1988','kola@urk.net','test','jurnalist','mikola','true','false'),(3,'Петя','Інкогніто','12:010:1988','inkognito@urk.net','test','reader','inko','true','false');
 /*!40000 ALTER TABLE `Users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -64,4 +89,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-05-13  0:08:58
+-- Dump completed on 2015-05-19  8:17:27

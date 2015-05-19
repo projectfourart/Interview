@@ -7,7 +7,7 @@ from application.controllers.main_controller import Main
 from application.controllers.profile_controller import Profile
 from application.controllers.registration_controller import Registration
 from application.controllers.not_found_controller import Not_Found
-from flask import Flask, request, session
+from flask import Flask, request, session, redirect, url_for
 
 app = Flask(__name__)
 app.debug = True

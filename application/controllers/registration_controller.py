@@ -13,5 +13,5 @@ class Registration(object):
 		self.view = RegView()
 
 	def show(self):
-		return self.view.render( )
+		return self.view.render()
 

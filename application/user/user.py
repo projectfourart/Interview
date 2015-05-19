@@ -13,6 +13,7 @@ class User(object):
 	
 	def __init__(self):
 		self.__model = Model()
+
 	def auth_user(self, request):
 		username = request.form['username']
 		password = request.form['password']
@@ -22,7 +23,8 @@ class User(object):
 		if username == ADMIN_NAME and password == ADMIN_PASSWORD:
 			session['admin'] = True
 			session['username'] = "Admin"
-			redirect(url_for('index'))
+			redirect(url_for("index"))
+
 
 
 	def exit(self):

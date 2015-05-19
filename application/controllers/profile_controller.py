@@ -4,7 +4,7 @@
 	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 """
 
-from application.model.model import *
+from application.model.model import Model
 from application.views.view_profile import ViewProfile
 from application.user.user import User
 from flask import redirect, url_for
@@ -17,4 +17,5 @@ class Profile(object):
 
 	def show(self, index):
 		dump = self.__model.getIndexPerson(TABLE_USERS, index)
-		return self.__view.render(dump)
+		question = self.__model.getQuestionAll()
+		return self.__view.render(dump, question)
