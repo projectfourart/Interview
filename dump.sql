@@ -66,8 +66,9 @@ CREATE TABLE `Users` (
   `login` text,
   `visible` text,
   `status` text,
+  `quesition` text,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -76,7 +77,7 @@ CREATE TABLE `Users` (
 
 LOCK TABLES `Users` WRITE;
 /*!40000 ALTER TABLE `Users` DISABLE KEYS */;
-INSERT INTO `Users` VALUES (1,'Вася ','Пупкін','2:03:1982','vasa@urk.net','password','reader','vasilich','true','false'),(2,'Коля','Ковалевич','10:06:1988','kola@urk.net','test','jurnalist','mikola','true','false'),(3,'Петя','Інкогніто','12:010:1988','inkognito@urk.net','test','reader','inko','true','false');
+INSERT INTO `Users` VALUES (1,'Вася ','Пупкін','2:03:1982','vasa@urk.net','password','reader','vasilich','true','true','1 : 2 : 3 : '),(2,'Коля','Ковалевич','10:06:1988','kola@urk.net','test','jurnalist','mikola','true','false',NULL),(3,'Петя','Інкогніто','12:010:1988','inkognito@urk.net','test','reader','inko','true','true','1 : 2 : 3 : 5 : '),(4,'zxcv','zxcv','1:04:1982','sasha-kovalchuk7@mail.ru','asdf','Interviewter','asdf','true','true','1 : 2 : ');
 /*!40000 ALTER TABLE `Users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -89,4 +90,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-05-19  8:17:27
+-- Dump completed on 2015-05-20 12:51:39
