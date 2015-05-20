@@ -96,3 +96,7 @@ table > tbody >tr > td  > a {
   text-align: left;
   text-indent: 9px;
 }
+.img {
+  width: 200px;
+  height: 300px;
+}

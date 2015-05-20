@@ -7,6 +7,8 @@ from application.controllers.main_controller import Main
 from application.controllers.profile_controller import Profile
 from application.controllers.registration_controller import Registration
 from application.controllers.not_found_controller import Not_Found
+from application.controllers.about_controller import About
+from application.controllers.contact_controller import Contact
 from flask import Flask, request, session, redirect, url_for
 
 app = Flask(__name__)
@@ -63,10 +65,20 @@ def profile(id):
 
 @app.route("/about_pro")
 def about():
-	pass
+	""" 
+	This is about page!
+	"""
+	obj = About()
+	return obj.show()
+
 @app.route("/contact")
 def contact():
-	pass
+	"""
+	This is contact page!
+	"""
+	obj = Contact()
+	return obj.show()
+
 @app.errorhandler(404)
 def not_found_page(error):
 	"""
