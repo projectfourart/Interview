@@ -3,12 +3,10 @@
   <div class="panel-heading">Перелік запитань</div>
 	  <div class="panel-body">
 	    <ul class="list-group">
-	    <li class="list-group-item">Quation #1</li>
-	    <li class="list-group-item">Quation #2</li>
-	    <li class="list-group-item">Quation #3</li>
-	    <li class="list-group-item">Quation #4</li>
-	    <li class="list-group-item">Quation #5</li>
+	    {% for j in active %}
+		    <li class="list-group-item">{{ j }}</li>
+	    {%  endfor %}
 	  </ul>
   </div> 
 </div> <!-- /.panel -->
-<button type="button" class="btn btn-success">Назад</button>
+<a href="/" class="btn btn-success" >Назад</a>

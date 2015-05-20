@@ -18,4 +18,5 @@ class Profile(object):
 	def show(self, index):
 		dump = self.__model.getIndexPerson(TABLE_USERS, index)
 		question = self.__model.getQuestionAll()
-		return self.__view.render(dump, question)
+		active = self.__model.get_active_question(index)
+		return self.__view.render(dump, question, active)

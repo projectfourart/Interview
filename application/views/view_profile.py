@@ -8,6 +8,6 @@ class ViewProfile(object):
 	"""
 		This is  profile view!
 	"""
-	def render(self, data, question):
-		return render_template("base_profile.html", data = data, question = question)
+	def render(self, data, question, active_question):
+		return render_template("base_profile.html", data = data, question = question, active = active_question)
 

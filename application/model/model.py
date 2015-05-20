@@ -3,9 +3,10 @@
 	Interview.application.model.model
 	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 """
-import MySQLdb
 from application.configuration import *
 from ConfigParser import ConfigParser
+import MySQLdb
+import re
 
 class Model(object):
 	__connect = None
@@ -36,9 +37,9 @@ class Model(object):
 		else:
 			return False
 	def add_question(self,id_user, text):
-		sql = "UPDATE SET `Users` `status` = 'true'" 
-		print sql
-
+		sql = "UPDATE `Users` SET `quesition` = \'%s\', `status` = 'true' WHERE `id` = \'%s\' " % (text, id_user)
+		self.__cursor.execute(sql)
+		self.__connect.commit()
 
 	def getQuestionAll(self):
 		sql = "SELECT * FROM %s" % (TABLE_QUESTION)
@@ -49,6 +50,17 @@ class Model(object):
 	# 	sql = " INSERT INTO `Person` (`name`, `surname`) VALUES ( '%s' , '%s') " % (name, surname)
 	# 	self.__cursor.execute(sql)
 	# 	self.__connect.commit()
+	def get_active_question(self, id_user):
+		sql = "SELECT `quesition` FROM `Users` WHERE `id`  = \'%s\' " % (id_user)
+		self.__cursor.execute(sql)
+		result = str(self.__cursor.fetchall()[0][0])
+		# print result
+		index =  re.findall(r"(\d+)", result)
+		array = []
+		for i in index:
+			self.__cursor.execute('SELECT `body` FROM `%s` WHERE `id` = \'%s\'' %  (TABLE_QUESTION, i))
+			array.append(self.__cursor.fetchall()[0][0])
+		return array
 
 	def DropPerson(self, index_person):
 		sql = "UPDATE `%(table_name)s` SET `visible` = 'false' WHERE `id` = '%(id)s' " % {"table_name":TABLE_USERS,"id":index_person}
