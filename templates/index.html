@@ -23,7 +23,7 @@
 				  <!-- Table -->
 				  <table class="table .table-list-user">
 					<thead>
-						<tr><td>№</td><td>Ім’я</td><td>Прізвище</td><td>Дата народження</td><td>Статус</td> 
+						<tr><td>№</td><td>Ім’я</td><td>Прізвище</td><td>Статус</td>
 						{% if session['admin'] == True %}
 							<td>Видалити</td> 
 						{% else %}
@@ -34,7 +34,7 @@
 					{% for team in data %}
 
 				    <tr><td><a href="/profile/{{team[0]}}" >{{ team[0] }}</a></td><td><a href="/profile/{{team[0]}}" >{{ team[1] }}</a></td><td><a href="/profile/{{team[0]}}" >{{ team[2] }}</a></td> <!-- block start -->
-				    	<td><a href="/profile/{{team[0]}}" >{{ team[3] }}</a></td>
+				    
 				    	{% if team[4] == 'true' %}
 				    	<td>
 				    		<span style="color:green;" class="glyphicon glyphicon-ok-circle"></span>

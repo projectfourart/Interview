@@ -5,7 +5,7 @@
 """
 
 HOST = "localhost"
-PASSWORD = "x7liruk"
+PASSWORD = "1111"
 USER = "root"
 DATABASE = "interview"
 CODING = "utf8"

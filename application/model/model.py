@@ -16,7 +16,7 @@ class Model(object):
 			self.__cursor = self.__connect.cursor()
 
 	def getAllListPerson(self, table_name):
-		sql = " SELECT `id`,`name`,`surname`,`brithish_day`,`status` FROM `"+table_name+"` WHERE `visible` =  'true' "
+		sql = " SELECT `id`,`name`,`surname`,`status` FROM `"+table_name+"` WHERE `visible` =  'true' "
 		self.__cursor.execute(sql)
 		return self.__cursor.fetchall()
 

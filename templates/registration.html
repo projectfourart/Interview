@@ -22,48 +22,7 @@
                               <input type="text" name="surname" class="form-control" id="inputName" placeholder="Прізвище">
                             </div>
                           </div><!-- ./form-group -->  
-                          <div class="form-group">
-                            <label for="inputName" class="col-sm-2 control-label"> Дата народження </label> 
-                            <div class="col-sm-3">
-                            <select name="" id="day" class="form-control" >
-
-                              {% for i in range(0,32) %}
-                                {% if i == 0 %}
-                                <option value=""> -- </option>  
-                                {% else %}
-                                <option value=""> {{ i }} </option>
-                                {% endif %}
-                              {% endfor %}
-
-                            </select>
-                            </div>                              
-                             <div class="col-sm-4">
-                            <select name="" id="mondey" class="form-control">
-                             {% for i in ['--',' Січень', 'Лютий', 'Березень', 'Квітень','Травень', 'Червень', 'Липень', 'Серпень','Вересень','Жовтень','Листопад','Грудень'] %}
-                                {% if i == 0 %}
-                                <option value=""> -- </option>  
-                                {% else %}
-                                <option value=""> {{ i }} </option>
-                                {% endif %}
-                              {% endfor %}
-                            </select>
-                            </div>                              
-                            <div class="col-sm-3" >
-                            <select name="" id="year" class="form-control">
-
-                              {% for i in range(1980,1999) %}
-                                {% if i == 1980 %}
-                                <option value=""> -- </option>  
-                                {% else %}
-                                <option value=""> {{ i }} </option>
-                                {% endif %}
-                              {% endfor %}
-
-                              
-                            </select>
-                            </div>                           
-   
-                          </div><!-- ./form-group -->  
+                         
 
                           <div class="form-group">
                             <label for="inputName" class="col-sm-2 control-label"> Е-mail </label> 
@@ -92,15 +51,6 @@
                               <input type="password" name="password_repeat" class="form-control" id="inputName" placeholder="Підтвердіть пароль">
                             </div>
                           </div><!-- ./form-group -->
-                            <div class="form-group">
-                            <label for="inputName" class="col-sm-2 control-label">Роль на сайті</label>
-                            <div class="col-sm-10">
-                                <span ><input type="radio" ckecked name="role"  value="reader" /> Читач </span>
-                                <span><input type="radio" name="role"  value="jurnalist" /> Журналіст </span>
-                                <span><input type="radio" name="role"  value="Interviewter" /> Ітрервютер </span>
-                            </div>
-                          </div><!-- ./form-group -->
-
                             <div class="form-group">
                             <div class="col-sm-10">
                               <button type="submit" class="btn btn-success">Відправити</button>
