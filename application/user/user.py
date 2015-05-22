@@ -17,13 +17,11 @@ class User(object):
 	def auth_user(self, request):
 		username = request.form['username']
 		password = request.form['password']
-		if self.__model.IsExistsUser(TABLE_USERS, username, password):
-			session['username'] = username
-			redirect(url_for("index"))
-		if username == ADMIN_NAME and password == ADMIN_PASSWORD:
-			session['admin'] = True
-			session['username'] = "Admin"
-			redirect(url_for("index"))
+		result = self.__model.IsExistsUser(TABLE_USERS, username, password)
+		if result:
+			if result[0] == password:
+				session['username'] = username
+				session['type'] = result[1]
 
 	def add_active_question(self, request):
 		id_user = request.form['id']

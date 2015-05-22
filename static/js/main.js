@@ -4,8 +4,73 @@
 			this.setUpListeners();	
 		},
 		setUpListeners : function (){
-			$('form').on("submit", app.submitForm );
+			if ($('#form_reg').length != 0){
+				$('form').on("submit", app.submitForm );
+			}
+			else if ($('#form_auth').length != 0){
+				 $('form').on("submit", app.validataeFormAuth)
+				}
+
 		},
+		validataeFormAuth : function(data){
+			data.preventDefault();
+			var form = $(this)
+			if (app.test(form)){
+				// console.log("+")	
+				data = {}
+				var inputs = form.find("input");
+				for (var i = 0; i < inputs.length; i++){
+					data[inputs[i].name] =  inputs[i].value
+				}
+				
+				$.ajax({
+				  url: '/',
+				  data: data,
+				  type: "POST",
+				  success: function(){
+					 window.location.reload();
+				  }
+				});
+
+			}
+
+
+		},
+		test :function(data){
+
+			var inputs = data.find("input");
+			valid = true;
+			inputs.tooltip('destroy');
+
+
+			$.each(inputs,function(index, val){
+				var input = $(val);
+				value = input.val();
+				formGroup = input.parents('.form-group');
+				label = formGroup.find('label').text().toLowerCase();
+				textError = "Ведіть " + label;
+
+
+
+				if (value.length === 0){
+					formGroup.addClass('has-error').removeClass('has-success');
+					input.tooltip({
+						trigger: 'manual',
+						placement: 'top',
+						title: textError
+					}).tooltip('show');
+
+					valid = false;
+				}else {
+					formGroup.addClass('has-success').removeClass('has-error');
+				}			
+			});
+
+
+			return valid;
+
+		}
+		,
 		submitForm : function (data){
 			data.preventDefault();
 			form = $(this)

@@ -14,7 +14,85 @@
             <h1>Ласкаво просимо!</h1>
             <p>Даний сервіс надає допомогу клієнтам ( користувачам ) мати змогу надати інформацію про ... </p>
           </div>
+			<div class="row" >
+					
+				<dir class="col-lg-3 col-xs-12 col-md-6">
+					<div class="thumbnail">
+							<img src="http://www.odd-e.com/material/public/resources/python/python.png" class="img" alt=""><p></p>
+												<div class="caption">
+												<h3>Python</h3>
+												<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+												
+												<p></p>
+												{% if session['username'] and session['type'] == 'user'%}
 
+												<p><a href="#" class="btn btn-success" role="button">Підписатись на курс</a> </p> 
+
+												{% endif %}
+												</div>
+							<p></p>
+							
+						</div>
+				</dir><!--  col-lg-3 -->
+				<dir class="col-lg-3 col-xs-12 col-md-6">
+					<div class="thumbnail">
+							<img src="http://www.unixstickers.com/image/cache/data/stickers/php/php.sh-600x600.png" class="img-circle" alt=""><p></p>
+												<div class="caption">
+												<h3>PHP</h3>
+												<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+
+
+												<p></p>
+												{% if session['username'] and session['type'] == 'user'%}
+
+												<p><a href="#" class="btn btn-success" role="button">Підписатись на курс</a> </p> 
+
+												{% endif %}
+												</div>
+							<p></p>
+							
+						</div>
+				</dir><!--  col-lg-3 -->
+				<dir class="col-lg-3 col-xs-12 col-md-6">
+					<div class="thumbnail">
+							<img src="http://www.egison.org/images/ErlangLogo.jpeg" class="img-circle" alt=""><p></p>
+												<div class="caption">
+												<h3>Erlang</h3>
+												<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+
+												<p></p>
+												{% if session['username'] and session['type'] == 'user'%}
+
+												<p><a href="#" class="btn btn-success" role="button">Підписатись на курс</a> </p> 
+
+												{% endif %}
+												</div>
+							<p></p>
+							
+						</div>
+				</dir><!--  col-lg-3 -->			
+				<dir class="col-lg-3 col-xs-12 col-md-6">
+					<div class="thumbnail">
+							<img src="http://www.bugtreat.com/blog/wp-content/uploads/2012/07/add-css-file-to-html1.jpg" class="img-circle" alt=""><p></p>
+												<div class="caption">
+												<h3>HTML/CSS</h3>
+												<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+
+												<p></p>
+												{% if session['username'] and session['type'] == 'user'%}
+
+												<p><a href="#" class="btn btn-success" role="button">Підписатись на курс</a> </p> 
+
+												{% endif %}
+												</div>
+							<p></p>
+							
+						</div>
+				</dir><!--  col-lg-3 -->
+				
+
+				
+			</div>
         </div><!--/span-->
 
         <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
@@ -25,7 +103,7 @@
 					<a class="btn btn-primary" href="?exit=True">Вихід</a>
 
 				{% else %}
-				<form role="form">
+				<form role="form" id="form_auth">
 					<input type="text" value="ok" name="button_auth" style="display:none;">
 					<div class="input-group form-group">
 						  <label for="inputName" class="col-sm-2 control-label" style="display:none"> Логін </label> 
@@ -39,7 +117,7 @@
 					</div>
 					<br>
 					<div class="input-group form-group">
-						 <button type="submit" class="btn btn-success">Авторизація</button>					
+						 <button type="submit" id="auth_user" class="btn btn-success">Авторизація</button>					
 					</div>
 				</form><!-- ./form -->
 				{% endif %}

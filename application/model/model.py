@@ -26,16 +26,14 @@ class Model(object):
 		return self.__cursor.fetchall()
 
 	def IsExistsUser(self, table_name, user, password):
-		sql = " SELECT `password` FROM `"+table_name+"` WHERE `name` = '"+user+"' "
+		sql = " SELECT `password`,`type` FROM `"+table_name+"` WHERE `login` = '"+user+"' "
 		self.__cursor.execute(sql)
-
 		try:
-			if self.__cursor.fetchall()[0][0] == password:
-				return True
+			return self.__cursor.fetchall()[0]
 		except IndexError:
 			return False
-		else:
-			return False
+
+
 	def add_question(self,id_user, text):
 		sql = "UPDATE `Users` SET `quesition` = \'%s\', `status` = 'true' WHERE `id` = \'%s\' " % (text, id_user)
 		self.__cursor.execute(sql)
