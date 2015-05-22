@@ -14,63 +14,7 @@
             <h1>Ласкаво просимо!</h1>
             <p>Даний сервіс надає допомогу клієнтам ( користувачам ) мати змогу надати інформацію про ... </p>
           </div>
-          <div class="row">
 
-          	<div class="col-xs-12">          		
-				<div class="panel panel-default ">
-				  <!-- Default panel contents -->
-				  <div class="panel-heading">Список користувачів</div>
-				  <!-- Table -->
-				  <table class="table .table-list-user">
-					<thead>
-						<tr><td>№</td><td>Ім’я</td><td>Прізвище</td><td>Статус</td>
-						{% if session['admin'] == True %}
-							<td>Видалити</td> 
-						{% else %}
-						 {% endif %}
-						  </tr>
-					</thead>
-				  	<tbody>
-					{% for team in data %}
-
-				    <tr><td><a href="/profile/{{team[0]}}" >{{ team[0] }}</a></td><td><a href="/profile/{{team[0]}}" >{{ team[1] }}</a></td><td><a href="/profile/{{team[0]}}" >{{ team[2] }}</a></td> <!-- block start -->
-				    
-				    	{% if team[4] == 'true' %}
-				    	<td>
-				    		<span style="color:green;" class="glyphicon glyphicon-ok-circle"></span>
-				  		</td>
-				  		{% else %}
-				  		<td>
-				    		<span style="color:red;" class="glyphicon glyphicon-remove-circle"></span>
-				  		</td>
-				  		{% endif %}
-				  		{% if session['admin'] == True %}
-				    	<td>
-					   		<a href="?drop_id={{team[0]}}"><span class='glyphicon glyphicon-trash'></span></a>
-						</td>
-						{% else %}
-						{% endif %}
-					</tr> {% endfor %} <!-- endblock -->
-				    
-				  	</tbody>
-				  </table>
-				</div>
-				{% if session['admin'] == True %}
-					<a href="?drop_all=True"> Видалити всіх користувачів </a>
-				{% endif %}
-          	</div><!-- list person  -->
-
-
-          </div><!--/row-->
-			<ul class="pagination">
-				  <li><a href="#">&laquo;</a></li>
-				  <li><a href="#">1</a></li>
-				  <li><a href="#">2</a></li>
-				  <li><a href="#">3</a></li>
-				  <li><a href="#">4</a></li>
-				  <li><a href="#">5</a></li>
-				  <li><a href="#">&raquo;</a></li>
-			</ul> <!-- pagination -->
         </div><!--/span-->
 
         <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">

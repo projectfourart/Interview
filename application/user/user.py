@@ -42,12 +42,10 @@ class User(object):
 		login = request.form['login']
 		password = request.form['password']
 		password_repeat = request.form['password_repeat']
-		brithish_day = str (request.form['day'] + ":0"+str( int(request.form['mondey']) )+":" + str(int(request.form['year']) + 1980)) # hard code
-		role = str(request.form['role'])
-		login = str(request.form['login'])
-		
+
 		if password != password_repeat: return False # validation
-		values = {'table_name':TABLE_USERS, 'name': name,'surname': surname, 'brithish_day':brithish_day, 'email':email, 'password': password,'role': role,'visible':"true", 'login':login, 'status': 'false'}
+
+		values = {'table_name':TABLE_USERS, 'name': name,'surname': surname, 'email':email, 'login':login, 'password': password, 'visible':"true", 'status': 'false','type':'user'}
 		self.__model.AddUser(values)
 
 

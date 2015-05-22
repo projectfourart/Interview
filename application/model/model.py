@@ -73,7 +73,7 @@ class Model(object):
 		self.__connect.commit()
 
 	def AddUser(self, values):
-		sql = "INSERT INTO `%(table_name)s` (`name`,`surname`,`brithish_day`,`email`,`password`,`role`,`login`,`visible`,`status`) VALUES ('%(name)s','%(surname)s','%(brithish_day)s','%(email)s','%(password)s','%(role)s','%(login)s','%(visible)s','%(status)s') " % values
+		sql = "INSERT INTO `%(table_name)s` (`name`,`surname`,`email`,`login`,`password`,`visible`,`status`,`type`) VALUES ('%(name)s','%(surname)s','%(email)s','%(login)s','%(password)s','%(visible)s','%(status)s','%(type)s') " % values
 		self.__cursor.execute(sql)
 		self.__connect.commit()
 

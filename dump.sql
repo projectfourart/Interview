@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.6.24, for debian-linux-gnu (x86_64)
+-- MySQL dump 10.13  Distrib 5.5.43, for debian-linux-gnu (i686)
 --
 -- Host: localhost    Database: interview
 -- ------------------------------------------------------
--- Server version	5.6.24-0ubuntu2
+-- Server version	5.5.43-0ubuntu0.14.04.1
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -24,31 +24,6 @@ CREATE DATABASE /*!32312 IF NOT EXISTS*/ `interview` /*!40100 DEFAULT CHARACTER 
 USE `interview`;
 
 --
--- Table structure for table `Question`
---
-
-DROP TABLE IF EXISTS `Question`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `Question` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `body` text,
-  `bals` varchar(20) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `Question`
---
-
-LOCK TABLES `Question` WRITE;
-/*!40000 ALTER TABLE `Question` DISABLE KEYS */;
-INSERT INTO `Question` VALUES (1,'Запитання №1','2.5'),(2,'Запитання №2','2.4'),(3,'Запитання №3','2'),(4,'Запитання №4','2.6'),(5,'Запитання №5','2.2');
-/*!40000 ALTER TABLE `Question` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `Users`
 --
 
@@ -64,9 +39,9 @@ CREATE TABLE `Users` (
   `login` text,
   `visible` text,
   `status` text,
-  `quesition` text,
+  `type` text,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -75,7 +50,7 @@ CREATE TABLE `Users` (
 
 LOCK TABLES `Users` WRITE;
 /*!40000 ALTER TABLE `Users` DISABLE KEYS */;
-INSERT INTO `Users` VALUES (1,'Вася ','Пупкін','vasa@urk.net','password','vasilich','true','true','1 : 2 : 3 : '),(2,'Коля','Ковалевич','kola@urk.net','test','mikola','true','true','1 : 2 : '),(3,'Петя','Інкогніто','inkognito@urk.net','test','inko','true','true','1 : 2 : 3 : 5 : '),(4,'zxcv','zxcv','sasha-kovalchuk7@mail.ru','asdf','asdf','true','true','1 : 2 : '),(5,'New ','new','asdfas@asdf.ru','asdf','test','true','false',NULL);
+INSERT INTO `Users` VALUES (1,'Олександр','Ковальчук','sasha-kovalchuk7@mail.ru','x7liruk','mjs','true','false','user');
 /*!40000 ALTER TABLE `Users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -88,4 +63,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-05-21 12:23:52
+-- Dump completed on 2015-05-22 21:48:29

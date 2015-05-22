@@ -28,6 +28,7 @@ def index():
 			if len(request.form['username']) != 0 and len(request.form['password']) != 0: # validation
 				obj.user.auth_user(request)
 		if 'button_reg' in request.form:
+			# print request.form
 			obj.user.reg_user(request)
 		if 'id' in request.form and 'data' in request.form:
 			obj.user.add_active_question(request) 
