@@ -58,6 +58,8 @@ def registration():
 	obj = Registration()
 	return obj.show()
 
+
+
 @app.route("/profile/<int:id>")
 def profile(id):
 	"""

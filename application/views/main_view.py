@@ -10,6 +10,6 @@ class MainView(object):
 	def __init__(self, data=[]):
 		self.data = data
 
-	def render(self, data):
-		return render_template("index.html", data=data)
+	def render(self, data, interview):
+		return render_template("index.html", data=data, interview = interview)
 

@@ -41,7 +41,13 @@ class Model(object):
 			return self.__cursor.fetchall()[0][0]
 		except IndexError:
 			return []
-
+	def getAllSoursesUsers(self, id_user):
+		sql = "SELECT `id`,`name`,`users`,`snipet` FROM `Sourses` WHERE `interviewter` = \'%s\' "  % (id_user)
+		self.__cursor.execute(sql)
+		try:
+			return self.__cursor.fetchall()
+		except IndexError:
+			return []
 
 		# return self.__cursor.fetchall()[0][0]
 
@@ -51,10 +57,6 @@ class Model(object):
 		self.__cursor.execute(sql)
 		return self.__cursor.fetchall()
 
-	def add_question(self,id_user, text):
-		sql = "UPDATE `Users` SET `quesition` = \'%s\', `status` = 'true' WHERE `id` = \'%s\' " % (text, id_user)
-		self.__cursor.execute(sql)
-		self.__connect.commit()
 
 	def AddSRC(self, id_src):
 		data = self.getAllSourses()

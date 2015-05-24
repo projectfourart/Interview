@@ -1,0 +1,44 @@
+		<div class="col-xs-12 col-sm-9">
+          <p class="pull-right visible-xs">
+            <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
+          </p>
+			<div class="row" >
+				<div class="col-lg-12" >
+				{% for obj in interview %}
+					<div class="panel panel-default ">
+					  <div class="panel-body">
+					   {{ obj[1]}}
+					  </div>
+					  <div class="panel-footer">
+					  <p>{{obj[3]}}</p>
+						<div class="panel panel-info">
+						  <!-- Default panel contents -->
+						  <div class="panel-heading">Список підписаних користувачів</div>
+
+						  <!-- Table -->
+						  <table class="table">
+						  	<thead>
+						  		<tr>
+						  		<td>Ім’я</td>
+						  		<td>Прізвище</td>
+						  		<td>E-mail</td>
+						  		<td>Логін</td>
+						  		</tr>
+						  	</thead>
+						  	<tbody>
+						  	{% if obj[2] %}
+							  	{% for team in obj[2] %}
+							  	<tr><td> {{ team[1] }}</td><td> {{ team[2]}}</td><td>{{ team[3] }}</td><td>{{ team[5] }}</td></tr>
+								{% endfor %}
+						  	{%endif%}
+						  	</tbody>
+
+						  </table>
+						</div>
+
+					  </div>
+					</div>
+				{% endfor %}
+				</div>				
+			</div>
+        </div><!--/span-->
