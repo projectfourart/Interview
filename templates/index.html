@@ -16,81 +16,29 @@
           </div>
 			<div class="row" >
 					
-				<dir class="col-lg-3 col-xs-12 col-md-6">
-					<div class="thumbnail">
-							<img src="http://www.odd-e.com/material/public/resources/python/python.png" class="img" alt=""><p></p>
-												<div class="caption">
-												<h3>Python</h3>
-												<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-												
-												<p></p>
-												{% if session['username'] and session['type'] == 'user'%}
 
-												<p><a href="#" class="btn btn-success" role="button">Підписатись на курс</a> </p> 
+				{% for team in data %}
+					<dir class="col-lg-3 col-xs-12 col-md-6">
+						<div class="thumbnail">
+									<div class="caption">
+									<h3>{{team[1]}}</h3>
+									<p>{{team[4]}}</p>
+									
+									<p></p>
+									{% if session['username'] in team[3]  %}
 
-												{% endif %}
-												</div>
-							<p></p>
-							
-						</div>
-				</dir><!--  col-lg-3 -->
-				<dir class="col-lg-3 col-xs-12 col-md-6">
-					<div class="thumbnail">
-							<img src="http://www.unixstickers.com/image/cache/data/stickers/php/php.sh-600x600.png" class="img-circle" alt=""><p></p>
-												<div class="caption">
-												<h3>PHP</h3>
-												<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+										<p><a href="#" class="btn btn-success" disabled="disabled" role="button">Підписатись на курс</a> </p>
 
+									{% elif session['username'] and session['type'] == 'user' %}
+											<p><a href="?subscribe={{team[0]}}" class="btn btn-success" role="button">Підписатись на курс</a> </p>
+									{% endif %}
 
-												<p></p>
-												{% if session['username'] and session['type'] == 'user'%}
-
-												<p><a href="#" class="btn btn-success" role="button">Підписатись на курс</a> </p> 
-
-												{% endif %}
-												</div>
-							<p></p>
-							
-						</div>
-				</dir><!--  col-lg-3 -->
-				<dir class="col-lg-3 col-xs-12 col-md-6">
-					<div class="thumbnail">
-							<img src="http://www.egison.org/images/ErlangLogo.jpeg" class="img-circle" alt=""><p></p>
-												<div class="caption">
-												<h3>Erlang</h3>
-												<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-
-												<p></p>
-												{% if session['username'] and session['type'] == 'user'%}
-
-												<p><a href="#" class="btn btn-success" role="button">Підписатись на курс</a> </p> 
-
-												{% endif %}
-												</div>
-							<p></p>
-							
-						</div>
-				</dir><!--  col-lg-3 -->			
-				<dir class="col-lg-3 col-xs-12 col-md-6">
-					<div class="thumbnail">
-							<img src="http://www.bugtreat.com/blog/wp-content/uploads/2012/07/add-css-file-to-html1.jpg" class="img-circle" alt=""><p></p>
-												<div class="caption">
-												<h3>HTML/CSS</h3>
-												<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-
-												<p></p>
-												{% if session['username'] and session['type'] == 'user'%}
-
-												<p><a href="#" class="btn btn-success" role="button">Підписатись на курс</a> </p> 
-
-												{% endif %}
-												</div>
-							<p></p>
-							
-						</div>
-				</dir><!--  col-lg-3 -->
-				
-
+									</div>
+								<p></p>
+								
+							</div>
+					</dir><!--  col-lg-3 -->				
+				{% endfor %}
 				
 			</div>
         </div><!--/span-->

@@ -4,6 +4,7 @@
 	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 """
 from application.configuration import *
+from flask import session
 from ConfigParser import ConfigParser
 import MySQLdb
 import re
@@ -26,28 +27,71 @@ class Model(object):
 		return self.__cursor.fetchall()
 
 	def IsExistsUser(self, table_name, user, password):
-		sql = " SELECT `password`,`type` FROM `"+table_name+"` WHERE `login` = '"+user+"' "
+		sql = " SELECT `password`,`type`,`id` FROM `"+table_name+"` WHERE `login` = '"+user+"' "
 		self.__cursor.execute(sql)
 		try:
 			return self.__cursor.fetchall()[0]
 		except IndexError:
 			return False
 
+	def getNameUser(self,id):
+		sql = "SELECT `login` FROM `Users` WHERE `id` = \'%s\'" % (id)
+		self.__cursor.execute(sql)
+		try:
+			return self.__cursor.fetchall()[0][0]
+		except IndexError:
+			return []
+
+
+		# return self.__cursor.fetchall()[0][0]
+
+
+	def getAllSourses(self):
+		sql = "SELECT * FROM `Sourses` "
+		self.__cursor.execute(sql)
+		return self.__cursor.fetchall()
 
 	def add_question(self,id_user, text):
 		sql = "UPDATE `Users` SET `quesition` = \'%s\', `status` = 'true' WHERE `id` = \'%s\' " % (text, id_user)
 		self.__cursor.execute(sql)
 		self.__connect.commit()
 
+	def AddSRC(self, id_src):
+		data = self.getAllSourses()
+		users = []
+		for i in data:
+			if i[3] != None:
+				# users.append(i[3].split(':'))
+				test = []
+				for j in i[3].split(':'):
+					test.append(self.getNameUser(j))
+				users.append( test	)
+
+			else:
+				users.append([])
+
+		id_user = session['id']
+		if session['username'] not in users[int(id_src)-1]:
+			fild_uresr = data[int(id_src)-1][3]
+
+			if fild_uresr != None:
+				users = str(fild_uresr)+"%s:"  % id_user
+			else:
+
+				users = "%s:" % id_user
+
+			sql_src = "UPDATE `Sourses` SET `users` = '%(users)s' WHERE `id` = \'%(id_src)s\' " % {"users":users,"id_src":id_src}
+			self.__cursor.execute(sql_src)
+			self.__connect.commit()
+
+		
+			
+
 	def getQuestionAll(self):
 		sql = "SELECT * FROM %s" % (TABLE_QUESTION)
 		self.__cursor.execute(sql)
 		return self.__cursor.fetchall()	
 
-	# def AddNewPerson(self, name, surname):
-	# 	sql = " INSERT INTO `Person` (`name`, `surname`) VALUES ( '%s' , '%s') " % (name, surname)
-	# 	self.__cursor.execute(sql)
-	# 	self.__connect.commit()
 	def get_active_question(self, id_user):
 		sql = "SELECT `quesition` FROM `Users` WHERE `id`  = \'%s\' " % (id_user)
 		self.__cursor.execute(sql)

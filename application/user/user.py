@@ -22,6 +22,10 @@ class User(object):
 			if result[0] == password:
 				session['username'] = username
 				session['type'] = result[1]
+				session['id'] = result[2]
+
+	def AddSourses(self,id_src):
+		self.__model.AddSRC(id_src)
 
 	def add_active_question(self, request):
 		id_user = request.form['id']

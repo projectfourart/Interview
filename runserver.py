@@ -38,6 +38,9 @@ def index():
 			obj.user.delete_user(request.args.get('drop_id')) 
 		elif request.args.get('drop_all') and request.args.get('drop') != "":
 			obj.user.delete_all_user() 
+		elif request.args.get('subscribe') and request.args.get('subscribe') != "":
+			if session['username'] and session['type'] == 'user':
+				obj.user.AddSourses(request.args.get('subscribe'))
 			
 		elif request.args.get('exit') == "True":
 			obj.user.exit()

@@ -16,7 +16,27 @@ class Main(object):
 		self.user = User()
 
 	def show(self):
-		data = self.user.get_list_all_user()
-		return self.__view.render(data)
+		data = self.__model.getAllSourses()
+		users = []
+		for i in data:
+			if i[3] != None:
+				# users.append(i[3].split(':'))
+				
+				test = []
+				for j in i[3].split(':'):
+					test.append(self.__model.getNameUser(j))
+				users.append( test	)
+
+			else:
+				users.append([])
+		new = []
+		for i in data:
+			new.append(list(i))
+
+		i = 0
+		while i < len(new):
+			new[i][3] = users[i]
+			i += 1
+		return self.__view.render(new)
 
 
