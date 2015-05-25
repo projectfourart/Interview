@@ -160,7 +160,6 @@ $("#finish").click(function (){
 
 window.onload = function(){
 	if (window.location.search == "?exit=True"){
-		window.location.href = "/";
+		window.location.href = "/";`
 	}
 };
-

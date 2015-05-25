@@ -97,6 +97,6 @@ table > tbody >tr > td  > a {
   text-indent: 9px;
 }
 .img {
-  width: 200px;
-  height: 300px;
+  width: 200px !important;
+  height: 300px !important;
 }

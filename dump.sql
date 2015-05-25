@@ -96,7 +96,7 @@ CREATE TABLE `Sourses` (
 
 LOCK TABLES `Sourses` WRITE;
 /*!40000 ALTER TABLE `Sourses` DISABLE KEYS */;
-INSERT INTO `Sourses` VALUES (1,'Python',NULL,'6:3:','Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.'),(2,'HTML/CSS','5','1:6:3:7:','Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.'),(3,'PHP',NULL,'1:7:','Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.'),(4,'JavaScript',NULL,'1:7:','Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.');
+INSERT INTO `Sourses` VALUES (1,'Python','8','6:3:','Python-interpritation programing language. This cources by people who want learned Python'),(2,'HTML/CSS','5','1:6:3:7:','HTML/CSS-This course is designed for those who wish to do frontend . Create web pages and sites.'),(3,'PHP',NULL,'1:7:','PHP-server programming language designed for writing backend applications, creating and conducting various inquiries.'),(4,'JavaScript',NULL,'1:7:','PHP-serJavaScript- scripting programming language for reviving static HTML- documents.');
 /*!40000 ALTER TABLE `Sourses` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -119,7 +119,7 @@ CREATE TABLE `Users` (
   `type` text,
   `quesition` text,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -128,7 +128,7 @@ CREATE TABLE `Users` (
 
 LOCK TABLES `Users` WRITE;
 /*!40000 ALTER TABLE `Users` DISABLE KEYS */;
-INSERT INTO `Users` VALUES (1,'Олександр','Ковальчук','sasha-kovalchuk7@mail.ru','x7liruk','mjs','true','false','user',NULL),(2,'test','test','sasha-kovalchuk7@mail.ru','asdf','mjs','true','false','user',NULL),(3,'asdf','asdf','dsfgsfdg@asdf.ru','asdf','asdf','true','false','user',NULL),(4,'asdfasdfasdf','asdf','dsfgsfdg@asdf.ru','1111','new','true','false','user',NULL),(5,'Віка ','Мартинюк','vika@ukr.net','1234','vika','true','false','interviewer',NULL),(6,'test','test','test@test.ru','1234','test_new','true','false','user',NULL),(7,'new','new ','test@asdf.ru','1234','test','true','false','user',NULL);
+INSERT INTO `Users` VALUES (1,'Олександр','Ковальчук','sasha-kovalchuk7@mail.ru','x7liruk','mjs','true','false','user',NULL),(2,'test','test','sasha-kovalchuk7@mail.ru','asdf','mjs','true','false','user',NULL),(3,'asdf','asdf','dsfgsfdg@asdf.ru','asdf','asdf','true','false','user',NULL),(4,'asdfasdfasdf','asdf','dsfgsfdg@asdf.ru','1111','new','true','false','user',NULL),(5,'Віка ','Мартинюк','vika@ukr.net','1234','vika','true','false','interviewer',NULL),(6,'test','test','test@test.ru','1234','test_new','true','false','user',NULL),(7,'new','new ','test@asdf.ru','1234','test','true','false','user',NULL),(8,'Igor','Kiriychuk','Kirias@ukr.net','kirias@1996','Kirias','true','false','interviewer',NULL);
 /*!40000 ALTER TABLE `Users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -141,4 +141,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-05-25 13:33:37
+-- Dump completed on 2015-05-25 14:45:21
