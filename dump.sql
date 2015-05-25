@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.5.43, for debian-linux-gnu (i686)
+-- MySQL dump 10.13  Distrib 5.6.24, for debian-linux-gnu (x86_64)
 --
 -- Host: localhost    Database: interview
 -- ------------------------------------------------------
--- Server version	5.5.43-0ubuntu0.14.04.1
+-- Server version	5.6.24-0ubuntu2
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -22,6 +22,56 @@
 CREATE DATABASE /*!32312 IF NOT EXISTS*/ `interview` /*!40100 DEFAULT CHARACTER SET latin1 */;
 
 USE `interview`;
+
+--
+-- Table structure for table `Question`
+--
+
+DROP TABLE IF EXISTS `Question`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `Question` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `body` text,
+  `bals` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `Question`
+--
+
+LOCK TABLES `Question` WRITE;
+/*!40000 ALTER TABLE `Question` DISABLE KEYS */;
+INSERT INTO `Question` VALUES (1,'Запитання №1','2.5'),(2,'Запитання №2','2.4'),(3,'Запитання №3','2'),(4,'Запитання №4','2.6'),(5,'Запитання №5','2.2');
+/*!40000 ALTER TABLE `Question` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `Questions`
+--
+
+DROP TABLE IF EXISTS `Questions`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `Questions` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` text,
+  `users` text,
+  `quesition` text,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `Questions`
+--
+
+LOCK TABLES `Questions` WRITE;
+/*!40000 ALTER TABLE `Questions` DISABLE KEYS */;
+/*!40000 ALTER TABLE `Questions` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `Sourses`
@@ -46,7 +96,7 @@ CREATE TABLE `Sourses` (
 
 LOCK TABLES `Sourses` WRITE;
 /*!40000 ALTER TABLE `Sourses` DISABLE KEYS */;
-INSERT INTO `Sourses` VALUES (1,'Python',NULL,'6:','Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.'),(2,'HTML/CSS','5','1:6:','Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.'),(3,'PHP',NULL,NULL,'Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.'),(4,'JavaScript',NULL,'1:','Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.');
+INSERT INTO `Sourses` VALUES (1,'Python',NULL,'6:3:','Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.'),(2,'HTML/CSS','5','1:6:3:7:','Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.'),(3,'PHP',NULL,'1:7:','Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.'),(4,'JavaScript',NULL,'1:7:','Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.');
 /*!40000 ALTER TABLE `Sourses` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -67,8 +117,9 @@ CREATE TABLE `Users` (
   `visible` text,
   `status` text,
   `type` text,
+  `quesition` text,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -77,7 +128,7 @@ CREATE TABLE `Users` (
 
 LOCK TABLES `Users` WRITE;
 /*!40000 ALTER TABLE `Users` DISABLE KEYS */;
-INSERT INTO `Users` VALUES (1,'Олександр','Ковальчук','sasha-kovalchuk7@mail.ru','x7liruk','mjs','true','false','user'),(2,'test','test','sasha-kovalchuk7@mail.ru','asdf','mjs','true','false','user'),(3,'asdf','asdf','dsfgsfdg@asdf.ru','asdf','asdf','true','false','user'),(4,'asdfasdfasdf','asdf','dsfgsfdg@asdf.ru','1111','new','true','false','user'),(5,'Віка ','Мартинюк','vika@ukr.net','1234','vika','true','false','interviewer'),(6,'test','test','test@test.ru','1234','test_new','true','false','user');
+INSERT INTO `Users` VALUES (1,'Олександр','Ковальчук','sasha-kovalchuk7@mail.ru','x7liruk','mjs','true','false','user',NULL),(2,'test','test','sasha-kovalchuk7@mail.ru','asdf','mjs','true','false','user',NULL),(3,'asdf','asdf','dsfgsfdg@asdf.ru','asdf','asdf','true','false','user',NULL),(4,'asdfasdfasdf','asdf','dsfgsfdg@asdf.ru','1111','new','true','false','user',NULL),(5,'Віка ','Мартинюк','vika@ukr.net','1234','vika','true','false','interviewer',NULL),(6,'test','test','test@test.ru','1234','test_new','true','false','user',NULL),(7,'new','new ','test@asdf.ru','1234','test','true','false','user',NULL);
 /*!40000 ALTER TABLE `Users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -90,4 +141,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-05-25  0:11:59
+-- Dump completed on 2015-05-25 13:33:37

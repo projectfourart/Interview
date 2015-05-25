@@ -44,12 +44,16 @@ class Main(object):
 		while i < len(array_other):
 			array_other[i][3] = users[i]
 			i += 1
-
-		interview = self.getAllSoursesUsers(users_id)
+		if session:
+			interview = self.getAllSoursesUsers(users_id)
+		else:
+			interview = []
 		return self.__view.render(array_other, interview)
 
 	def getAllSoursesUsers(self, users_id):
 		id_user = session['id']
+
+
 		data = self.__model.getAllSoursesUsers(id_user)
 
 		array_other = []
