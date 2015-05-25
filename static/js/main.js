@@ -2,6 +2,7 @@
 	var app = {
 		init : function(){
 			this.setUpListeners();	
+
 		},
 		setUpListeners : function (){
 			if ($('#form_reg').length != 0){
@@ -156,3 +157,10 @@
 $("#finish").click(function (){
 	window.location = "/";
 });
+
+window.onload = function(){
+	if (window.location.search == "?exit=True"){
+		window.location.href = "/";
+	}
+};
+
