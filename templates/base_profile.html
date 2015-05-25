@@ -18,23 +18,19 @@
 							  		<td>{{ data[0][1] }} {{data[0][2]}}</td>
 							  	</tr>
 							  	<tr>
-							  		<td>Дата народження</td>
+							  		<td>E-mail</td>
 							  		<td>{{ data[0][3] }}</td>
 							  	</tr>
 							  	<tr>
-							  		<td>E-mail</td>
-							  		<td>{{ data[0][4] }}</td>
-							  	</tr>
-							  	<tr>
 							  		<td>Логін</td>
-							  		<td>{{ data[0][7] }}</td>
+							  		<td>{{ data[0][5] }}</td>
 							  	</tr>
 						  </table>
 
 						</div>
 					
 				</div>
-					{% if data[0][9] == "false" %}
+					{% if data[0][7] == "false" %}
 						{% include "show_test.html" %}	
 					{% else %}
 						{% include "show_test_result.html" %}
