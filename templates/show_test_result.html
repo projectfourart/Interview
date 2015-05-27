@@ -4,9 +4,10 @@
 	  <div class="panel-body">
 	    <ul class="list-group">
 	    {% for j in active %}
-		    <li class="list-group-item">{{ j }}</li>
+		    <li class="list-group-item">{{ j[0] }} <span class="bal" style="float:right;"> {{ j[1]}}</span></li>
 	    {%  endfor %}
 	  </ul>
+	  <span style="float:right;color:grey;font-size:10pt;margin-right:15px;" class="lable" id="result"></span>
   </div> 
 </div> <!-- /.panel -->
 <a href="/" class="btn btn-success" >Назад</a>

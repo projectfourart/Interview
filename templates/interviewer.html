@@ -23,12 +23,19 @@
 						  		<td>Прізвище</td>
 						  		<td>E-mail</td>
 						  		<td>Логін</td>
+						  		<td>Cтатус</td>
 						  		</tr>
 						  	</thead>
 						  	<tbody>
 						  	{% if obj[2] %}
 							  	{% for team in obj[2] %}
-							  	<tr><td> <a href="/profile/{{team[0]}}">{{ team[1] }} </a></td><td> {{ team[2]}}</td><td>{{ team[3] }}</td><td>{{ team[5] }}</td></tr>
+							  	<tr><td> <a href="/profile/{{team[0]}}">{{ team[1] }} </a></td><td> {{ team[2]}}</td><td>{{ team[3] }}</td><td>{{ team[5] }}</td>
+							  	{% if team[7] == "true" %}
+							  	<td> <span style="color:green;"  class="glyphicon glyphicon-ok"></span></td>
+							  	{% else %}	
+								<td> <span  style="color:red;" class="glyphicon glyphicon-remove"></span></td>
+								{% endif %}
+							  
 								{% endfor %}
 						  	{%endif%}
 						  	</tbody>

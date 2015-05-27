@@ -7,7 +7,7 @@
 					  {% for obj in question %}
 					    <li class="list-group-item">
 						<div class="input-group">
-						      <span type="text" class="form-control">{{ obj[1] }}<span style="float:right;">{{ obj[2] }} </span></span>
+						      <span type="text" class="form-control">{{ obj[1] }}<span class='bals' style="float:right;">{{ obj[2] }} </span></span>
 
 						      <span class="input-group-addon"> 
 						        <input type="checkbox">
@@ -30,7 +30,9 @@
 
 					  </ul>
 					</div>
-					<button type="button" class="btn btn-success" id="loading-example-btn" data-loading-text="Завантаження..." data-toggle="modal" data-target="#myModal">Зберегти</button>
+					<button type="button" id="loading-example-btn" data-loading-text="Додання..." class="btn btn-success">
+					        Додати
+					</button>
 					<button type="button" class="btn btn-success" id="clear_btn">Очистити</button>
 
 				</div>

@@ -33,6 +33,11 @@ class Model(object):
 			return self.__cursor.fetchall()[0]
 		except IndexError:
 			return False
+	def add_question(self, id_user, text):
+		sql = "UPDATE `Users` SET `status` = 'true', `quesition` = \'%s\' WHERE `id` = \'%s\'" % (text,id_user)
+		self.__cursor.execute(sql)
+		self.__connect.commit()
+
 
 	def getNameUser(self,id):
 		sql = "SELECT `login` FROM `Users` WHERE `id` = \'%s\'" % (id)
@@ -101,9 +106,11 @@ class Model(object):
 		# print result
 		index =  re.findall(r"(\d+)", result)
 		array = []
+		bals = []
 		for i in index:
-			self.__cursor.execute('SELECT `body` FROM `%s` WHERE `id` = \'%s\'' %  (TABLE_QUESTION, i))
-			array.append(self.__cursor.fetchall()[0][0])
+			self.__cursor.execute('SELECT `body`,`bals` FROM `%s` WHERE `id` = \'%s\'' %  (TABLE_QUESTION, i))
+			array.append(self.__cursor.fetchall()[0])
+
 		return array
 
 	def DropPerson(self, index_person):
