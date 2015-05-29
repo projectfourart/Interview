@@ -268,6 +268,11 @@ window.onload = function(){
 }());
 
 window.onload = function (){
+
+	if ((window.location.search == "?exit=True")){
+		window.location.href = "/";
+	}
+	
 	var bals = $('.bal');
 	sum = 0
 	$.each(bals, function(i,v){
@@ -275,5 +280,7 @@ window.onload = function (){
 		sum += Number(v.textContent)
 	});
 	// $('#result').innerHTML = sum;
-	$("#result")[0].innerHTML  = sum.toFixed(1)
+	if ($("#result")[0]){
+		$('#result')[0].innerHTML  = sum.toFixed(1)
+	}
 };
