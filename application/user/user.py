@@ -9,7 +9,6 @@ from flask import redirect, url_for, session
 from application.configuration import ADMIN_NAME, ADMIN_PASSWORD
 
 class User(object):
-	# array_mondey = [u'--',u' Січень', u'Лютий', u'Березень', u'Квітень',u'Травень', u'Червень', u'Липень', u'Серпень',u'Вересень',u'Жовтень',u'Листопад',u'Грудень']
 	
 	def __init__(self):
 		self.__model = Model()
@@ -17,12 +16,18 @@ class User(object):
 	def auth_user(self, request):
 		username = request.form['username']
 		password = request.form['password']
-		result = self.__model.IsExistsUser(TABLE_USERS, username, password)
-		if result:
-			if result[0] == password:
-				session['username'] = username
-				session['type'] = result[1]
-				session['id'] = result[2]
+		if username == ADMIN_NAME and password == ADMIN_PASSWORD:
+			session['username'] = username
+			session['type'] = 'admin'
+			# session['id'] = None
+		else:
+
+			result = self.__model.IsExistsUser(TABLE_USERS, username, password)
+			if result:
+				if result[0] == password:
+					session['username'] = username
+					session['type'] = result[1]
+					session['id'] = result[2]
 
 	def AddSourses(self,id_src):
 		self.__model.AddSRC(id_src)

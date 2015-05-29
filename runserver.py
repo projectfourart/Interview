@@ -41,6 +41,14 @@ def index():
 		elif request.args.get('subscribe') and request.args.get('subscribe') != "":
 			if session['username'] and session['type'] == 'user':
 				obj.user.AddSourses(request.args.get('subscribe'))
+		elif request.args.get('drop_sourse') and request.args.get('drop_sourse') != "":
+			if 'type' in session:
+				if session['type'] == 'admin':
+					obj.sourses.deleteSoursesId(int(request.args.get('drop_sourse')))
+		elif request.args.get('btn_add_src') and request.args.get('name') != ""  and request.args.get('discriptor')  != "":
+			if 'type' in session:
+				if session['type'] == 'admin':
+					obj.sourses.addNewSrc(request.args.get('name'), request.args.get('discriptor'))	
 			
 		elif request.args.get('exit') == "True":
 			obj.user.exit()
@@ -95,12 +103,3 @@ def not_found_page(error):
 
 if __name__ == "__main__":
 	app.run()
-
-
-
-
-
-
-
-
-

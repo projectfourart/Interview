@@ -1,1 +1,71 @@
-<h1>admin</h1>
+		<div class="col-xs-12 col-sm-9">
+          <p class="pull-right visible-xs">
+            <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
+          </p>
+			<div class="row" >
+				<div class="col-lg-4">
+					  <div class="panel panel-default ">
+					    <div class="panel-body">
+						 Список курсів 
+					    </div>
+					    <div class="panel-footer">
+
+					    <ul class="list-group" id="list-group">
+					    {% for team in sourses %}
+						   	 <li class="list-group-item">{{ team[1] }} <a href="?drop_sourse={{team[0]}}" class="list_elm"><span class="glyphicon glyphicon-trash"></span></a></li>
+						{% endfor %}
+
+					  </ul><!-- list-group -->
+					  
+					    </div>
+					  </div>
+					<form  method="GET" action="/">
+					  <input type="text" name="btn_add_src" value='True' style="display:none;visible:hidden;"/>
+					  <div class="form-group">
+					    <input type="text" name="name"  class="form-control" placeholder="Name">
+					  </div>
+					  <div class='from-group'>
+						  <textarea name="discriptor"  placeholder="Discriptor" class="form-control"></textarea>
+					  </div>
+					  <br>
+					  <button type="submit" class="btn btn-default" >Додати</button>
+					</form>
+
+				</div>
+				
+					<div class="col-lg-4">
+					  <div class="panel panel-default ">
+					    <div class="panel-body">
+						 Список інтервютерів
+					    </div>
+					    <div class="panel-footer">
+
+					    <ul class="list-group" id="list-group">
+					    <li class="list-group-item">Vika <input type="checkbox" class="list_elm" /></li>
+					     <li class="list-group-item">Igor <input type="checkbox" class="list_elm" /></li>
+					       <li class="list-group-item">Mjs <input type="checkbox" class="list_elm" /></li>
+
+					  </ul><!-- list-group -->
+					  
+					    </div>
+					  </div>
+				</div>
+				<div class="col-lg-4">
+					  <div class="panel panel-default ">
+					    <div class="panel-body">
+						 Список корисувачів 
+					    </div>
+					    <div class="panel-footer">
+
+					    <ul class="list-group" id="list-group">
+					    <li class="list-group-item">test <input type="checkbox" class="list_elm" /></li>
+					     <li class="list-group-item">test <input type="checkbox" class="list_elm" /></li>
+					       <li class="list-group-item">test <input type="checkbox" class="list_elm" /></li>
+
+					  </ul><!-- list-group -->
+					  
+					    </div>
+					  </div>
+				</div>
+			</div>
+        </div><!--/span-->

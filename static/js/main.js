@@ -269,7 +269,7 @@ window.onload = function(){
 
 window.onload = function (){
 
-	if ((window.location.search == "?exit=True")){
+	if ((/^\?\.*/.test(window.location.search) )){
 		window.location.href = "/";
 	}
 	

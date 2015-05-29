@@ -7,13 +7,14 @@ from application.model.model import *
 from application.views.main_view import *
 from application.user.user import User
 from flask import redirect, url_for
-
+from application.sourses.sourses import Sourses
 class Main(object):
 
 	def __init__(self):
 		self.__model = Model()
 		self.__view = MainView()
 		self.user = User()
+		self.sourses = Sourses()
 	
 
 
@@ -51,7 +52,8 @@ class Main(object):
 		return self.__view.render(array_other, interview)
 
 	def getAllSoursesUsers(self, users_id):
-		id_user = session['id']
+		if 'id' in session:
+			id_user = session['id']
 
 
 		data = self.__model.getAllSoursesUsers(id_user)

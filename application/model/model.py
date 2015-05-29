@@ -56,30 +56,49 @@ class Model(object):
 
 		# return self.__cursor.fetchall()[0][0]
 
+	def dropSrcIndex(self,id):
+		sql = "DELETE FROM %(name_table)s WHERE `id` = \'%(id)s\' " % {"name_table":TABLE_SOURSES, "id":id}
+		# print sql
+		self.__cursor.execute(sql)
+		self.__connect.commit()
 
 	def getAllSourses(self):
 		sql = "SELECT * FROM `Sourses` "
 		self.__cursor.execute(sql)
 		return self.__cursor.fetchall()
-
-
+	def addSrc(self, name, dsc):
+		sql = "INSERT INTO %(table_name)s (`name`,`snipet`) VALUES ('%(name)s','%(dsc)s')" % {"table_name":TABLE_SOURSES , "name":name ,"dsc":dsc }
+		self.__cursor.execute(sql)
+		if self.__connect.commit():
+			return True
 	def AddSRC(self, id_src):
 		data = self.getAllSourses()
-		users = []
+		users = {}
 		for i in data:
 			if i[3] != None:
 				# users.append(i[3].split(':'))
 				test = []
 				for j in i[3].split(':'):
 					test.append(self.getNameUser(j))
-				users.append( test	)
+
+				users[int(i[0])] = test
 
 			else:
-				users.append([])
+				users[int(i[0])] = []
+
+		# print users
 
 		id_user = session['id']
-		if session['username'] not in users[int(id_src)-1]:
-			fild_uresr = data[int(id_src)-1][3]
+		# print id_src
+		print data
+		if session['username'] not in users[int(id_src)]:
+			# fild_uresr = data[int(id_src)-1][3]
+			for team in data:
+				# print team[0]
+				if int(team[0]) == int(id_src):
+					fild_uresr = team[3]
+			# fild_uresr = data[]
+
 
 			if fild_uresr != None:
 				users = str(fild_uresr)+"%s:"  % id_user
