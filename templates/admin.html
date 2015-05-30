@@ -9,17 +9,14 @@
 						 Список курсів 
 					    </div>
 					    <div class="panel-footer">
-
 					    <ul class="list-group" id="list-group">
-					    {% for team in sourses %}
-						   	 <li class="list-group-item">{{ team[1] }} <a href="?drop_sourse={{team[0]}}" class="list_elm"><span class="glyphicon glyphicon-trash"></span></a></li>
-						{% endfor %}
-
-					  </ul><!-- list-group -->
-					  
+						    {% for team in sourses %}
+							   	 <li class="list-group-item">{{ team[1] }} <a href="?drop_sourse={{team[0]}}" class="list_elm"><span class="glyphicon glyphicon-trash"></span></a></li>
+							{% endfor %}
+						  </ul><!-- list-group -->
 					    </div>
 					  </div>
-					<form  method="GET" action="/">
+					<form  method="POST" action="/">
 					  <input type="text" name="btn_add_src" value='True' style="display:none;visible:hidden;"/>
 					  <div class="form-group">
 					    <input type="text" name="name"  class="form-control" placeholder="Name">
@@ -40,15 +37,31 @@
 					    </div>
 					    <div class="panel-footer">
 
-					    <ul class="list-group" id="list-group">
-					    <li class="list-group-item">Vika <input type="checkbox" class="list_elm" /></li>
-					     <li class="list-group-item">Igor <input type="checkbox" class="list_elm" /></li>
-					       <li class="list-group-item">Mjs <input type="checkbox" class="list_elm" /></li>
+					 <ul class="list-group" id="list-group-interview">
+					 {% for team in interviewter %}
+					    <li class="list-group-item"> <span style="display:none;">{{team[0]}}</span> {{ team[1]}} => 
+					    {% for obj in team[2] %}
+					    	<span style='font-size:10pt; color:grey;'> {{ obj[1] }}</span>
+					    {% endfor%}
+					    
+					    	<!-- <input type="checkbox" class="list_elm" /> -->
+					    	<select class="form-control">
+					    	{% for obj in sourses %}
+					    		{% if obj[0] == 1 %}
+					    		<option>--</option>
+					    		{% endif%}
+					    		<option> {{ obj[1]}} </option>
+					    	{% endfor%}
+
+					    	</select>
+					    </li>
+					  {% endfor %}     
 
 					  </ul><!-- list-group -->
 					  
 					    </div>
 					  </div>
+					  <button type="submit" class="btn btn-default" id="btn-save-interview" >Зберегти зміни</button>
 				</div>
 				<div class="col-lg-4">
 					  <div class="panel panel-default ">

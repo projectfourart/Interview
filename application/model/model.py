@@ -15,6 +15,13 @@ class Model(object):
 	def __init__(self):
 			self.__connect = MySQLdb.connect(host = HOST, user = USER, passwd = PASSWORD, db = DATABASE, charset = CODING )
 			self.__cursor = self.__connect.cursor()
+	def updateSrc(self, name_src, id_user):
+		sql = "UPDATE %(table)s SET `interviewter` = \'%(value)s\' WHERE `name` = \'%(name)s\' " % \
+		{"table": TABLE_SOURSES, "value": id_user, "name": name_src} 
+		print sql
+		self.__cursor.execute(sql)
+		self.__connect.commit()
+
 
 	def getAllListPerson(self, table_name):
 		sql = " SELECT `id`,`name`,`surname`,`status` FROM `"+table_name+"` WHERE `visible` =  'true' "
@@ -54,7 +61,11 @@ class Model(object):
 		except IndexError:
 			return []
 
-		# return self.__cursor.fetchall()[0][0]
+
+	def getAllInterviewter(self):
+		sql = "SELECT `id`,`name` FROM %(table_name)s WHERE `type` = 'interviewer'" % {"table_name":TABLE_USERS}
+		self.__cursor.execute(sql)
+		return self.__cursor.fetchall()
 
 	def dropSrcIndex(self,id):
 		sql = "DELETE FROM %(name_table)s WHERE `id` = \'%(id)s\' " % {"name_table":TABLE_SOURSES, "id":id}
@@ -90,7 +101,6 @@ class Model(object):
 
 		id_user = session['id']
 		# print id_src
-		print data
 		if session['username'] not in users[int(id_src)]:
 			# fild_uresr = data[int(id_src)-1][3]
 			for team in data:

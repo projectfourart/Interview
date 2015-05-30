@@ -27,11 +27,23 @@ def index():
 		if 'button_auth' in request.form: # if click button auth_user
 			if len(request.form['username']) != 0 and len(request.form['password']) != 0: # validation
 				obj.user.auth_user(request)
+
 		if 'button_reg' in request.form:
 			# print request.form
 			obj.user.reg_user(request)
+
 		if 'id' in request.form and 'data' in request.form:
 			obj.user.add_active_question(request) 
+
+		if 'btn_add_src' in request.form and request.form['name'] != ""  and request.form['discriptor']  != "":
+			if 'type' in session:
+				if session['type'] == 'admin':
+					obj.sourses.addNewSrc(request.form['name'], request.form['discriptor'])	
+		if 'send-new-interview' in request.form:
+			if 'type' in session:
+				if session['type'] == 'admin':
+					# print 'exchange'
+					obj.user.exchangeSourses(request)
 
 	elif request.method == "GET":
 		if request.args.get('drop_id') and request.args.get('drop') != "":
@@ -45,10 +57,7 @@ def index():
 			if 'type' in session:
 				if session['type'] == 'admin':
 					obj.sourses.deleteSoursesId(int(request.args.get('drop_sourse')))
-		elif request.args.get('btn_add_src') and request.args.get('name') != ""  and request.args.get('discriptor')  != "":
-			if 'type' in session:
-				if session['type'] == 'admin':
-					obj.sourses.addNewSrc(request.args.get('name'), request.args.get('discriptor'))	
+		
 			
 		elif request.args.get('exit') == "True":
 			obj.user.exit()

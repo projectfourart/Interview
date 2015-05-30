@@ -174,10 +174,34 @@ window.onload = function(){
 			$("#clear_btn").on("click", app.clear)
 			$('#loading-example-btn').on("click", app.load)
 			$("#reset").on("click", app.reset)
+			$("#btn-save-interview").on("click", app.save_interview)
 		},
 		reset : function(){
 			window.location.href = "/"
 		},
+		save_interview : function (){
+			var list = $("#list-group-interview")
+			var inputs = list.find('li')
+			// console.log(inputs[0])
+			var array = {}
+			$.each(inputs, function(i, v){
+				if (v.children[2].value == "--"){
+					array[v.children[0].innerHTML] = ""
+				}else
+					array[v.children[0].innerHTML] = v.children[2].value
+			});
+			array['send-new-interview']	= 'ok'
+			$.ajax({
+				  url: '/',
+				  data: array,
+				  type: "POST",
+				  success: function(){
+					    // $('#myModalBox').modal('show');
+					    app.reset();
+				  }
+				});
+		}
+		,
 		load : function (){
 
 			    var btn = $(this)

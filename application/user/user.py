@@ -7,11 +7,25 @@ from application.model.model import Model
 from application.configuration import TABLE_USERS
 from flask import redirect, url_for, session
 from application.configuration import ADMIN_NAME, ADMIN_PASSWORD
+import re
 
 class User(object):
 	
 	def __init__(self):
 		self.__model = Model()
+
+	def exchangeSourses(self, data):
+		# print data.form[0][0]
+		# i = 0
+				# print team
+		keys =  data.form.keys()
+		values = data.form.values()
+		i = 0
+		while  i < len(data.form):
+			if re.match('^\d+$', keys[i]):
+				if values[i] != "":
+					self.__model.updateSrc(values[i], keys[i])
+			i += 1
 
 	def auth_user(self, request):
 		username = request.form['username']
@@ -29,6 +43,8 @@ class User(object):
 					session['type'] = result[1]
 					session['id'] = result[2]
 
+	def getReqirment(self,id):
+		return self.__model.getAllSoursesUsers(id)
 	def AddSourses(self,id_src):
 		self.__model.AddSRC(id_src)
 
