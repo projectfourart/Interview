@@ -7,6 +7,7 @@
 from flask import render_template
 from application.model.model import Model
 from application.user.user import User
+
 class MainView(object):
 	def __init__(self):
 		self.__model = Model()
@@ -27,5 +28,6 @@ class MainView(object):
 			# print self.user.getReqirment(array[i][0])
 			i += 1
 		# print array
-		return render_template("index.html", data=data, interview = interview, sourses = sourses, interviewter=array)
+		users = self.user.get_list_all_user()
+		return render_template("index.html",user=users, data=data, interview = interview, sourses = sourses, interviewter=array)
 

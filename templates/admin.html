@@ -70,10 +70,10 @@
 					    </div>
 					    <div class="panel-footer">
 
-					    <ul class="list-group" id="list-group">
-					    <li class="list-group-item">test <input type="checkbox" class="list_elm" /></li>
-					     <li class="list-group-item">test <input type="checkbox" class="list_elm" /></li>
-					       <li class="list-group-item">test <input type="checkbox" class="list_elm" /></li>
+					  <ul class="list-group" id="list-group">
+					 		{% for team in user %} 
+							   	<li class="list-group-item">{{ team[1] }} {{ team[2]}}</li>
+						    {% endfor %}
 
 					  </ul><!-- list-group -->
 					  

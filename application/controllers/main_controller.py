@@ -54,8 +54,10 @@ class Main(object):
 	def getAllSoursesUsers(self, users_id):
 		if 'id' in session:
 			id_user = session['id']
+		else:
+			id_user = None
 
-
+ 
 		data = self.__model.getAllSoursesUsers(id_user)
 
 		array_other = []
