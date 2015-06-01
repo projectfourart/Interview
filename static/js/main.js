@@ -175,7 +175,48 @@ window.onload = function(){
 			$('#loading-example-btn').on("click", app.load)
 			$("#reset").on("click", app.reset)
 			$("#btn-save-interview").on("click", app.save_interview)
+			$('#btn-save-change').on('click', app.save_change)
 		},
+		save_change : function (){
+			// console.log(app.selected)
+			var original = app.selected;
+			var chenges = []
+			$.each($('.type_user'),function(i,v){
+				// chenges.push(v.dataset.name)
+				// console.log(v.selectedIndex)
+				if (v.selectedIndex == 0)
+					chenges.push("user")
+				else if (v.selectedIndex == 1)
+					chenges.push('admin')
+				else if (v.selectedIndex == 2)
+					chenges.push('interviewer')
+			});
+			// console.log(original)
+			// console.log(chenges)
+			var new_array = {}
+			new_array['btn-save-changes'] = 'true'
+			var j = 0
+			for (var i = 0; i < original.length ;i++) {
+				if (chenges[i] != original[i]){
+					new_array[i+1] = chenges[i]
+					j ++;
+				}
+			};
+			// console.log(new_array.length)
+				if (j != 0){
+					$.ajax({
+					  url: '/',
+					  data: new_array,
+					  type: "POST",
+					  success: function(){
+							 window.location.reload();
+					  }
+					});
+		
+				}
+						
+			}
+		,
 		reset : function(){
 			window.location.href = "/"
 		},
@@ -184,12 +225,15 @@ window.onload = function(){
 			var inputs = list.find('li')
 			// console.log(inputs[0])
 			var array = {}
+			// console.log(inputs)
 			$.each(inputs, function(i, v){
-				if (v.children[2].value == "--"){
+				console.log(v)
+				if (v.children[1].value == "--"){
 					array[v.children[0].innerHTML] = ""
 				}else
-					array[v.children[0].innerHTML] = v.children[2].value
+					array[v.children[0].innerHTML] = v.children[1].value
 			});
+
 			array['send-new-interview']	= 'ok'
 			$.ajax({
 				  url: '/',
@@ -307,4 +351,22 @@ window.onload = function (){
 	if ($("#result")[0]){
 		$('#result')[0].innerHTML  = sum.toFixed(1)
 	}
+
+	app.selected = function(){
+		// this.selectedIndex = index;
+		// console.log(index)
+		array = []
+		var selected = $('.type_user');
+		$.each(selected, function(index, value){
+			// console.log(value.dataset.name)
+			array.push( value.dataset.name )
+			if (value.dataset.name == "user")
+				value.selectedIndex = 0
+			else if (value.dataset.name == "interviewer")
+				value.selectedIndex = 2
+			else if (value.dataset.name == "admin")
+				value.selectedIndex = 1
+		});
+		return array
+	}()
 };

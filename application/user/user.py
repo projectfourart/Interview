@@ -70,7 +70,17 @@ class User(object):
 
 		values = {'table_name':TABLE_USERS, 'name': name,'surname': surname, 'email':email, 'login':login, 'password': password, 'visible':"true", 'status': 'false','type':'user'}
 		self.__model.AddUser(values)
-
+	def updateTypeUser(self,data):
+		# print request.form
+		# self.__model
+		keys =  data.form.keys()
+		values = data.form.values()
+		i = 0
+		while  i < len(data.form):
+			if re.match('^\d+$', keys[i]):
+				if values[i] != "":
+					self.__model.updateType(values[i], keys[i])
+			i += 1
 
 
 	def delete_all_user(self):

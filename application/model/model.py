@@ -24,9 +24,17 @@ class Model(object):
 
 
 	def getAllListPerson(self, table_name):
-		sql = " SELECT `id`,`name`,`surname`,`status` FROM `"+table_name+"` WHERE `visible` =  'true' "
+		sql = " SELECT * FROM `"+table_name+"` WHERE `visible` =  'true' "
 		self.__cursor.execute(sql)
 		return self.__cursor.fetchall()
+
+	def updateType(self,key, value):
+		sql = 'UPDATE %(table)s SET `type` = \'%(key)s\' WHERE `id` = %(value)s' % {"table": TABLE_USERS, "value": value, "key": key}
+		# print sql
+		self.__cursor.execute(sql)
+		self.__connect.commit()
+
+
 
 	def getIndexPerson(self, table, index):
 		sql = "SELECT * FROM `%(table)s` WHERE  `id` = '%(index)s' " % {"table":table, "index": index}

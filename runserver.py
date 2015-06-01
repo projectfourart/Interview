@@ -44,6 +44,10 @@ def index():
 				if session['type'] == 'admin':
 					# print 'exchange'
 					obj.user.exchangeSourses(request)
+		if 'btn-save-changes' in request.form:
+			if 'type' in session:
+				if session['type'] == 'admin':
+					obj.user.updateTypeUser(request)
 
 	elif request.method == "GET":
 		if request.args.get('drop_id') and request.args.get('drop') != "":
