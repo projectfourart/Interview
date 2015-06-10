@@ -11,7 +11,7 @@
 					    <div class="panel-footer">
 					    <ul class="list-group" id="list-group">
 						    {% for team in sourses %}
-							   	 <li class="list-group-item">{{ team[1] }} <a href="?drop_sourse={{team[0]}}" class="list_elm"><span class="glyphicon glyphicon-trash"></span></a></li>
+							   	 <li class="list-group-item">{{ team[1] }} <a href="#" onclick="confirmDelete( {{team[0]}} )"   class="list_elm"><span class="glyphicon glyphicon-trash"></span></a></li>
 							{% endfor %}
 						  </ul><!-- list-group -->
 					<form  method="POST" action="/">

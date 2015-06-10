@@ -41,7 +41,10 @@
 				</form><!-- ./form -->
 				{% endif %}
 			</div>
-			<a href="/registration" id='registration'>Реєстрація</a>
+			{% if not session['username'] %}
+				<a href="/registration" id='registration'>Реєстрація</a>
+			{% endif %}
+
         </div><!--/span-->
       </div><!--/row-->
 	    <hr>

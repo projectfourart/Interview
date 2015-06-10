@@ -370,3 +370,9 @@ window.onload = function (){
 		return array
 	}()
 };
+
+function confirmDelete(id) {
+	value =  confirm("Ви підтверджуєте видалення?");
+	if (value) 
+		window.location.href="?drop_sourse="+String(id)
+}
