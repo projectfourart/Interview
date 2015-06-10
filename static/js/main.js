@@ -254,11 +254,18 @@ window.onload = function(){
 				var question = ""
 			    var all_question = app.getAllQuestion(".form-control")
 			    var active_question = app.getActiveInputs()
+			    count = 0
 			    for (var i =0 ; i < all_question[0].length; i++){
 				// console.log(active[i])
 						if (active_question[i] == true){
 							question += ""+String(i+1)+" : "
+							count ++
 						}
+				}
+				if (count <= 0){
+					window.alert("Не вибрано ні одного запитання");
+					btn.button('reset')
+					return false;
 				}
 
 				var reg = /\/profile\/(\d+)/ig
@@ -279,6 +286,17 @@ window.onload = function(){
 
 		clear : function(){
 			window.location.reload()
+			var elm = $(".input-group");
+			// console.log(elm)
+			for(var i = 0; i < elm.length; i++ ){
+				var dump = $(elm[i]).find("input")
+				if (dump != undefined){
+					if (dump[0]) 
+						dump[0].checked = false
+				}
+
+
+			}
 		}
 		,
 		eventClickAdd : function(){
