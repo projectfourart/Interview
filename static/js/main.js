@@ -263,7 +263,7 @@ window.onload = function(){
 						}
 				}
 				if (count <= 0){
-					window.alert("Не вибрано ні одного запитання");
+					window.alert("Не вибрано ні одного запитання!");
 					btn.button('reset')
 					return false;
 				}

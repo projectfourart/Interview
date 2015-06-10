@@ -18,9 +18,12 @@
 									
 									<p></p>
 
-									{% if session['username'] in team[3]  %}
-
+									{% if session['username'] in team[3]   %}
+										{% if  user[session['id']-1][7] == 'true' %}
 										<p><a href="/profile/{{session['id']}}" class="btn btn-warning">  Перегляд </a></p>
+										{%else%}
+										<p><a href="#" class="btn btn-default disabled">Запитання не додані</a></p>
+										{%endif%}
 									{% elif session['username'] and session['type'] == 'user' %}
 											<p><a href="?subscribe={{team[0]}}" class="btn btn-success" role="button">Підписатись на курс</a> </p>
 
