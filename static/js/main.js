@@ -170,9 +170,9 @@ window.onload = function(){
 			app.setUpListeners();
 		},
 		setUpListeners : function(){
-			$("#add_quation").on("click", app.eventClickAdd)
+			$("#add_quation").on("click", app.load)
 			$("#clear_btn").on("click", app.clear)
-			$('#loading-example-btn').on("click", app.load)
+			// $('#loading-example-btn').on("click", app.load)
 			$("#reset").on("click", app.reset)
 			$("#btn-save-interview").on("click", app.save_interview)
 			$('#btn-save-change').on('click', app.save_change)
@@ -250,53 +250,37 @@ window.onload = function(){
 
 			    var btn = $(this)
 			    btn.button('loading')
+			   	var elm = $("#list").find("li")
+			    data = []
+			    bals = []
+			    $.each(elm, function(index, value){
+			    	data.push(value.firstChild.nodeValue)
+			    	bals.push($(value).find('span')[0].innerHTML)
 
-				var question = ""
-			    var all_question = app.getAllQuestion(".form-control")
-			    var active_question = app.getActiveInputs()
-			    count = 0
-			    for (var i =0 ; i < all_question[0].length; i++){
-				// console.log(active[i])
-						if (active_question[i] == true){
-							question += ""+String(i+1)+" : "
-							count ++
-						}
-				}
-				if (count <= 0){
-					window.alert("Не вибрано ні одного запитання!");
-					btn.button('reset')
-					return false;
-				}
+			    })
+
 
 				var reg = /\/profile\/(\d+)/ig
 				var id_user = reg.exec(window.location.href)[1]
-			    $.ajax({
-			    	method: "POST",
-			    	data: "id="+String(id_user)+"&data="+String(question)+"",
-			    	url: "/",
-			    }).done(function () {
-			      window.setTimeout(function(){
 
-			      	$('#Modal').modal('show')
-				    btn.button('reset')
-			      },2000);
-			    });
+			    // $.ajax({
+			    // 	method: "POST",
+			    // 	data: "id="+String(id_user)+"&data="+String(question)+"",
+			    // 	url: "/",
+			    // }).done(function () {
+			    //   window.setTimeout(function(){
+
+			    //   	$('#Modal').modal('show')
+				   //  btn.button('reset')
+			    //   },2000);
+			    // });
 
 		},
 
 		clear : function(){
 			window.location.reload()
-			var elm = $(".input-group");
-			// console.log(elm)
-			for(var i = 0; i < elm.length; i++ ){
-				var dump = $(elm[i]).find("input")
-				if (dump != undefined){
-					if (dump[0]) 
-						dump[0].checked = false
-				}
-
-
-			}
+			$("#question")[0].value = ''
+			$("#bals")[0].value = ""
 		}
 		,
 		eventClickAdd : function(){
@@ -394,3 +378,34 @@ function confirmDelete(id) {
 	if (value) 
 		window.location.href="?drop_sourse="+String(id)
 }
+
+(function(){
+	var app = {
+		"init" : function(){
+			app.setUpListeners()
+		},
+		"setUpListeners" : function(){
+			$("#add").on("click", app.eventClickAdd)
+		},
+		"eventClickAdd" : function(){
+			var question = app.getFildsQuestion()
+			var bals = app.getFildsBals()
+			var list = $("#list");
+			
+			list.append("<li class='list-group-item'>"+question+"<span style='float:right;color:grey;font-size:10pt;margin-right:15px;' class='lable' id='result'>"+bals+"</span></li>")
+
+
+			//----------------
+		},
+		"getFildsQuestion" : function(){
+			var elm = $("#question")[0].value
+			return elm
+		},
+		"getFildsBals": function(){
+			var elm = $("#bals")[0].value
+			return elm
+		}
+
+	}
+	app.init();
+})();

@@ -1,41 +1,37 @@
-<div class="col-ln-6 col-xs-6">
+<div class="col-ln-12 col-xs-12">
 					<div class="panel panel-info" id="list_quation">
 					  <!-- Default panel contents -->
 					  <div class="panel-heading">Список запитань</div>
 					  <!-- List group -->
-					  <ul class="list-group" id="list-group">
-					  {% for obj in question %}
-					    <li class="list-group-item">
-						<div class="input-group">
-						      <span type="text" class="form-control">{{ obj[1] }}<span class='bals' style="float:right;">{{ obj[2] }} </span></span>
+					 <ul class="list-group" id="list">
 
-						      <span class="input-group-addon"> 
-						        <input type="checkbox">
-						      </span>
-						    </div><!-- /input-group -->
+					 </ul>
+
+					  <ul class="list-group" id="list-group">
+					    <li class="list-group-item">
+							<div class="input-group">
+
+								<span class='input-group-addon' >
+						   			 <button type="button" class="btn btn-default" id="add">+</button>
+								</span>
+								<span class="input-group-addon " style="width:10px;" >
+									<input type="text" class="form-control" placeholder="Quesition" id="question">
+								</span>
+								<span class="input-group-addon"  >
+									<input type="text" id="bals" class="form-control" placeholder="Bals" style="width:60px;">
+								</span>
+
+
+
+							</div><!-- /input-group -->
 					    </li>
-					    {% endfor %}
-					  </ul>
-					</div>
-					  <button type="button" class="btn btn-primary" id="add_quation">Додати</button>
+					 </ul>
+
 
 				</div>				
-				<div class="col-ln-6 col-xs-6">
-					<div class="panel panel-success">
-					  <!-- Default panel contents -->
-					  <div class="panel-heading">Вибрано</div>
-
-					  <!-- List group -->
-					  <ul class="list-group" id="list_select_quation">
-
-					  </ul>
-					</div>
-					<button type="button" id="loading-example-btn" data-loading-text="Додання..." class="btn btn-success">
-					        Додати
-					</button>
-					<button type="button" class="btn btn-success" id="clear_btn">Очистити</button>
-
-				</div>
+					  <button type="button" class="btn btn-primary" id="add_quation">Додати</button>
+					  <button type="button" class="btn btn-primary" id="clear_btn">Очистити</button>
+				
 				<div class="modal fade" id="Modal">
 				  <div class="modal-dialog">
 				    <div class="modal-content">

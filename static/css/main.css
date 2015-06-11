@@ -105,3 +105,7 @@ float:right;
 margin-top:-1px !important;
 }
 
+.number_input {
+  width:40px;
+  margin-top:-8px;
+}
